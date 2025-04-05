@@ -10,7 +10,7 @@ namespace sumplierapp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new CustomerLoginPage();
         }
 
         protected override void OnStart()
