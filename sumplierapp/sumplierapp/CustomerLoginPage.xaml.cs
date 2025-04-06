@@ -51,6 +51,7 @@ namespace sumplierapp
 
                         Console.WriteLine($"Giriş başarılı {customer}");
                         DataStorage.Instance.SaveModel(DbKey.Customer.Name(), customer);
+                        Config.Instance.SetCurrentCustomer(customer);
                         Navigation.PushModalAsync(new UserLoginPage());
                     }
 
