@@ -16,10 +16,10 @@ namespace sumplierapp
 	public partial class DashboardPage : ContentPage
 	{
         ApiService apiService = new ApiService();
-        public DashboardPage (string userName)
+        public DashboardPage ()
 		{
 			InitializeComponent ();
-            GetCurrentLocation();
+            //GetCurrentLocation();
         }
         public async Task<string> GetCurrentLocation()// Cihaz konum bilgisi almak için
         {

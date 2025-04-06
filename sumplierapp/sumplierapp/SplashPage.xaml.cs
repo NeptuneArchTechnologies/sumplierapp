@@ -52,30 +52,35 @@ namespace sumplierapp
                 case SplashState.Menus:
                     // Menüleri aldıktan sonra Categories'e geçiyoruz
                     Console.WriteLine("Menus state: Fetching menus...");
+                    currentState = SplashState.Menus;
                     fetchMenus();
                     break;
 
                 case SplashState.Categories:
                     // Kategoriler geldikten sonra Products'a geçiyoruz
                     Console.WriteLine("Categories state: Fetching categories...");
+                    currentState = SplashState.Categories;
                     fetchCategories();
                     break;
 
                 case SplashState.Products:
                     // Ürünler geldikten sonra Accounts'a geçiyoruz
                     Console.WriteLine("Products state: Fetching products...");
+                    currentState = SplashState.Products;
                     fetchProducts();
                     break;
 
                 case SplashState.Accounts:
                     // Hesaplar geldikten sonra Done state'ine geçiyoruz
                     Console.WriteLine("Accounts state: Fetching accounts...");
+                    currentState = SplashState.Accounts;
                     fetchAccounts();
                     break;
 
                 case SplashState.Done:
                     // Tüm adımlar tamamlandığında
                     Console.WriteLine("Done state: All steps completed.");
+                    currentState = SplashState.Done;
                     OnConfigDone();
                     break;
 
@@ -216,7 +221,7 @@ namespace sumplierapp
             Config.Instance.CheckSetProducts(productList);
             Config.Instance.CheckSetAccounts(accountList);
 
-
+            Navigation.PushModalAsync(new DashboardPage());
         }
 
     }

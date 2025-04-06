@@ -30,6 +30,7 @@ namespace sumplierapp
             Customer customer = DataStorage.Instance.GetModel<Customer>(DbKey.Customer.Name());
 
             if (customer != null) {
+                Config.Instance.SetCurrentCustomer(customer);
                 Navigation.PushModalAsync(new UserLoginPage());
                 return;
             }
