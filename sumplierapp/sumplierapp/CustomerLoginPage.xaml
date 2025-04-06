@@ -3,10 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="sumplierapp.CustomerLoginPage">
     <StackLayout VerticalOptions="FillAndExpand"
-                 HorizontalOptions="FillAndExpand">
-        <Entry x:Name="email"/>
-        <Entry x:Name="password"/>
-        <Button x:Name="btnCustomerLoging"
-                Clicked="btnCustomerLogin_Clicked"/>
+                 HorizontalOptions="FillAndExpand"
+                 Padding="10">
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent">
+            <Label Text="Lütfen Lisans Bilgilerinizi Giriniz"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="Center"
+                   VerticalTextAlignment="End"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent">
+            <Entry x:Name="email" Placeholder="Email"/>
+            <Entry x:Name="password" Placeholder="Şifre"/>
+            <Button x:Name="btnCustomerLoging"
+                    Text="Giriş Yap"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="white"
+                    TextTransform="None"
+                    CornerRadius="30"
+                    Clicked="btnCustomerLogin_Clicked"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent">
+
+        </StackLayout>
     </StackLayout>
 </ContentPage>

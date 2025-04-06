@@ -9,13 +9,13 @@ namespace sumplierapp.Api
 {
     public class ApiService
     {
-        public async void GetCustomerLogin(string customerEmail, string customerPassword)
+        public async Task<string> GetCustomerLogin(string customerEmail, string customerPassword)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, "https://api.sumplier.com/SumplierAPI/Customer/GetCustomerLogin?Email="+ customerEmail + "&Password="+ customerPassword + "");
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            return await response.Content.ReadAsStringAsync();
         }
 
         public async void PutIsMenuActive(long CompanyCode, long ResellerCode, long CustomerCode, long MenuCode, bool IsActive)
@@ -36,6 +36,18 @@ namespace sumplierapp.Api
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             Console.WriteLine(await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<string> PostGeoLocation(string geoLocationJson)
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.sumplier.com/SumplierAPI/UsersGeoLocation/PostGeoLocation");
+            var content = new StringContent(geoLocationJson, null, "application/json");
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            return "Durum:" + response.Content.ReadAsStringAsync();
         }
     }
 }
