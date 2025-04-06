@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using sumplierapp.Api;
-using sumplierapp.Config;
+using sumplierapp.Configs;
 using sumplierapp.Model;
 using System;
 using System.Collections.Generic;
@@ -21,8 +21,6 @@ namespace sumplierapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CustomerLoginPage : ContentPage
     {
-        AppConfig appConfig = new AppConfig();
-        ApiService apiService = new ApiService();
         public CustomerLoginPage()
         {
             InitializeComponent();

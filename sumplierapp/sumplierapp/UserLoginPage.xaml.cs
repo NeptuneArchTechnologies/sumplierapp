@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using sumplierapp.Api;
-using sumplierapp.Config;
+using sumplierapp.Configs;
 using sumplierapp.Enum;
 using sumplierapp.Model;
 ﻿using sumplierapp.Api;
@@ -23,25 +23,14 @@ namespace sumplierapp
         public UserLoginPage()//Bir önceki sayfadan gelen veri buraya geliyor
         {
             InitializeComponent();
-            customerName = appConfig.GetCustomerName();//UserLoginde ilgili alana setlenebilir
-
-            LoginTypeEnum.App.ToString(); // Yaparsan string olan adı gelir
-            int type = (int)LoginTypeEnum.App; // Yaparsan int değeri gelir
-
-            
-
-        public UserLoginPage()//Bir önceki sayfadan gelen veri buraya geliyor
-        {
-            InitializeComponent();
-
         }
 
         private void btnUserLogin_Clicked(object sender, EventArgs e)
         {
 
             // Get the mail and password
-            string email = userEmail.Text;
-            string password = userPassword.Text;
+            string email = emailEntry.Text;
+            string password = passwordEntry.Text;
 
             var apiService = new ApiService();
 

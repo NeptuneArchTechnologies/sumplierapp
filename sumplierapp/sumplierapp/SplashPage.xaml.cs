@@ -217,7 +217,6 @@ namespace sumplierapp
             Config.Instance.CheckSetAccounts(accountList);
 
 
-
         }
 
     }

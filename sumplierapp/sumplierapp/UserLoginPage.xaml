@@ -16,8 +16,8 @@
         <StackLayout VerticalOptions="Center"
                  HorizontalOptions="FillAndExpand"
                  BackgroundColor="Transparent">
-            <Entry x:Name="email" Placeholder="Email"/>
-            <Entry x:Name="password" Placeholder="Şifre"/>
+            <Entry x:Name="emailEntry" Placeholder="Email"/>
+            <Entry x:Name="passwordEntry" Placeholder="Şifre"/>
             <Button x:Name="btnUserLoging"
                 Text="Giriş Yap"
                 BackgroundColor="DodgerBlue"

@@ -46,7 +46,7 @@ namespace sumplierapp
 
                     string userGeoLocation = JsonConvert.SerializeObject(usersGeoLocation);
 
-                    await apiService.PostGeoLocation(userGeoLocation);
+                    //await apiService.PostGeoLocation(userGeoLocation);
                 }
 
                 return "Başarılı";
