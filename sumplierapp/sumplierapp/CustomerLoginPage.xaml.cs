@@ -7,9 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sumplierapp.Api;
+using sumplierapp.Interface;
+using sumplierapp.Model;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using sumplierapp.LocalDatabase;
+using sumplierapp.Enum;
 
 namespace sumplierapp
 {
@@ -21,23 +26,40 @@ namespace sumplierapp
         public CustomerLoginPage()
         {
             InitializeComponent();
+
+            // Check if we got Customer data on out locale...
+
+            Customer customer = DataStorage.Instance.GetModel<Customer>(DbKey.Customer.Name());
+
+            if (customer != null) {
+                Navigation.PushModalAsync(new UserLoginPage());
+                return;
+            }
         }
 
         public async void btnCustomerLogin_Clicked(object sender, EventArgs e)
         {
-            var customerLogin = JsonConvert.DeserializeObject<Customer>(await apiService.GetCustomerLogin(email.Text, password.Text));
-            if (!string.IsNullOrEmpty(customerLogin.ToString()))
-            {
-                appConfig.SetCompanyCode(customerLogin.companyCode.ToString());
-                appConfig.SetCustomerCode(customerLogin.customerCode.ToString());
-                appConfig.SetCustomerName(customerLogin.customerName.ToString());
-                Navigation.PushModalAsync(new UserLoginPage());
-            }
-            else
-            {
-                DisplayAlert("Hata","Kullanıcı bilgileri hatalı  !!!","Tamam");
-            }
-            //string emre = Preferences.Get("customerName", string.Empty);//Çağırmak için
-        }
+            // Get the mail and password
+            string email = emailEntry.Text;
+            string password = passwordEntry.Text;
+
+            var apiService = new ApiService();
+
+            // Inline ApiCallBacks
+            apiService.GetCustomerLogin(email, password,
+                customer => {
+
+                    if (customer != null) {
+
+                        Console.WriteLine($"Giriş başarılı {customer}");
+                        DataStorage.Instance.SaveModel(DbKey.Customer.Name(), customer);
+                        Navigation.PushModalAsync(new UserLoginPage());
+                    }
+
+                },
+                errorMessage => {
+                    Console.WriteLine($"Giriş başarısız: {errorMessage}");
+                });
+        }       
     }
 }

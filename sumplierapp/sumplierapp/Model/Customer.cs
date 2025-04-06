@@ -6,18 +6,19 @@ namespace sumplierapp.Model
 {
     public class Customer
     {
-        public long id { get; set; }
-        public long companyCode { get; set; }
-        public long resellerCode { get; set; }
-        public long customerCode { get; set; }
-        public string customerName { get; set; }
-        public int customerType { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public string phone { get; set; }
-        public string address { get; set; }
-        public string taxOffice { get; set; }
-        public string taxNumber { get; set; }
-        public bool isActive { get; set; }
+        public long Id { get; set; }
+        public long CompanyCode { get; set; }
+        public long ResellerCode { get; set; }
+        public long CustomerCode { get; set; }
+        public string CustomerName { get; set; }
+        public int CustomerType { get; set; }
+        public string Email { get; set; } 
+        public string Password { get; set; } 
+        public string Phone { get; set; } 
+        public string Address { get; set; }  
+        public string TaxOffice { get; set; }
+        public string TaxNumber { get; set; }
+        public bool IsActive { get; set; }
     }
+
 }
