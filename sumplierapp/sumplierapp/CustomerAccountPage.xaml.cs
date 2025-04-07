@@ -36,10 +36,12 @@ namespace sumplierapp
             var _selectedAccount = (CustomerAccount)e.Item;
             var selectedAccount = new CustomerAccount
             {
-                AccountCode = _selectedAccount.AccountCode
+                AccountCode = _selectedAccount.AccountCode,
+                AccountName = _selectedAccount.AccountName
             };
             Config.Instance.SetCurrentAccountCode(selectedAccount);
-            Navigation.PushModalAsync(new OrderPage());
+            Config.Instance.SetCurrentAccountName(selectedAccount);
+            Navigation.PushModalAsync(new MenuPage());
         }
     }
 }

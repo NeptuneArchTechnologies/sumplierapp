@@ -4,7 +4,25 @@
              x:Class="sumplierapp.SplashPage">
     <StackLayout VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand">
-        <Image x:Name="ProgressIcon" Source="https://i.gifer.com/ZKZg.gif" IsAnimationPlaying="True"/>
-        <Label x:Name="PercentLabel" Text="%10" TextColor="Black"/>
+        <Image x:Name="ProgressIcon" 
+               Source="loading.gif" 
+               IsAnimationPlaying="True"
+               HeightRequest="100"
+               MinimumHeightRequest="100"
+               WidthRequest="100"
+               MinimumWidthRequest="100"
+               VerticalOptions="EndAndExpand"
+               HorizontalOptions="CenterAndExpand"
+               IsVisible="False"/>
+        <Label x:Name="StatusText"
+               TextColor="Black"
+               FontSize="Medium"
+               VerticalOptions="Start"
+               HorizontalOptions="CenterAndExpand"/>
+        <Label x:Name="PercentLabel"
+               TextColor="Black"
+               FontSize="Medium"
+               VerticalOptions="StartAndExpand"
+               HorizontalOptions="CenterAndExpand"/>
     </StackLayout>
 </ContentPage>

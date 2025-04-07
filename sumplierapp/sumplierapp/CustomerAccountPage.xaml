@@ -64,7 +64,7 @@
             <StackLayout VerticalOptions="End"
                          HorizontalOptions="FillAndExpand">
                 <Button x:Name="btnClose"
-                        Text="kapat"
+                        Text="Kapat"
                         TextTransform="None"
                         BackgroundColor="Red"
                         TextColor="White"

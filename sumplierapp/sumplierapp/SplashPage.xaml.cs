@@ -36,8 +36,8 @@ namespace sumplierapp
                 // Must handle error cases
             }
 
-            currentState = SplashState.Start;
-            ContinueNextStep();
+            //currentState = SplashState.Start;
+            //ContinueNextStep();
 
         }
 
@@ -52,6 +52,9 @@ namespace sumplierapp
                 case SplashState.Menus:
                     // Menüleri aldıktan sonra Categories'e geçiyoruz
                     Console.WriteLine("Menus state: Fetching menus...");
+                    ProgressIcon.IsVisible = true;
+                    PercentLabel.Text = "%25";
+                    StatusText.Text = "Menü Yükleniyor...";
                     currentState = SplashState.Menus;
                     fetchMenus();
                     break;
@@ -59,6 +62,8 @@ namespace sumplierapp
                 case SplashState.Categories:
                     // Kategoriler geldikten sonra Products'a geçiyoruz
                     Console.WriteLine("Categories state: Fetching categories...");
+                    PercentLabel.Text = "%37";
+                    StatusText.Text = "Kategoriler Yükleniyor...";
                     currentState = SplashState.Categories;
                     fetchCategories();
                     break;
@@ -66,6 +71,8 @@ namespace sumplierapp
                 case SplashState.Products:
                     // Ürünler geldikten sonra Accounts'a geçiyoruz
                     Console.WriteLine("Products state: Fetching products...");
+                    PercentLabel.Text = "%50";
+                    StatusText.Text = "Ürünler Yükleniyor...";
                     currentState = SplashState.Products;
                     fetchProducts();
                     break;
@@ -73,6 +80,8 @@ namespace sumplierapp
                 case SplashState.Accounts:
                     // Hesaplar geldikten sonra Done state'ine geçiyoruz
                     Console.WriteLine("Accounts state: Fetching accounts...");
+                    PercentLabel.Text = "%60";
+                    StatusText.Text = "Hesaplar Yükleniyor...";
                     currentState = SplashState.Accounts;
                     fetchAccounts();
                     break;
@@ -80,6 +89,9 @@ namespace sumplierapp
                 case SplashState.Done:
                     // Tüm adımlar tamamlandığında
                     Console.WriteLine("Done state: All steps completed.");
+                    PercentLabel.Text = "%100";
+                    StatusText.Text = "Yükleme Tamamlandı...";
+                    ProgressIcon.IsVisible = false;
                     currentState = SplashState.Done;
                     OnConfigDone();
                     break;

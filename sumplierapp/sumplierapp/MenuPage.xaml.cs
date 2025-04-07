@@ -11,12 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace sumplierapp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OrderPage : ContentPage
+    public partial class MenuPage : ContentPage
     {
-        public OrderPage()
+        public MenuPage()
         {
             InitializeComponent();
             AccountCode.Text = Config.Instance.GetCurrentAccountCode().AccountCode.ToString();
+            AccountName.Text = Config.Instance.GetCurrentAccountCode().AccountName.ToString();
         }
     }
 }

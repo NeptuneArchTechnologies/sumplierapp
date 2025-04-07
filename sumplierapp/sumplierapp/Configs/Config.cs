@@ -69,6 +69,16 @@ namespace sumplierapp.Configs
             return currentCustomerAccount;
         }
 
+        public void SetCurrentAccountName(CustomerAccount customerAccount)
+        {
+            currentCustomerAccount = customerAccount;
+        }
+
+        public CustomerAccount GetCurrentAccountName()
+        {
+            return currentCustomerAccount;
+        }
+
         // CheckSetMenus
         public void CheckSetMenus(List<CustomerMenu> menuList)
         {
