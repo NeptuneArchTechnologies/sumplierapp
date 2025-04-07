@@ -14,17 +14,21 @@
                VerticalTextAlignment="End"/>
         </StackLayout>
         <StackLayout VerticalOptions="Center"
-                 HorizontalOptions="FillAndExpand"
-                 BackgroundColor="Transparent">
-            <Entry x:Name="emailEntry" Placeholder="Email"/>
-            <Entry x:Name="passwordEntry" Placeholder="Şifre"/>
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent">
+            <Entry x:Name="emailEntry" 
+                   Placeholder="Email"
+                   Text="testmobile@test.com"/>
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Şifre"
+                   Text="1"/>
             <Button x:Name="btnUserLoging"
-                Text="Giriş Yap"
-                BackgroundColor="DodgerBlue"
-                TextColor="white"
-                TextTransform="None"
-                CornerRadius="30"
-                Clicked="btnUserLogin_Clicked"/>
+                    Text="Giriş Yap"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="white"
+                    TextTransform="None"
+                    CornerRadius="30"
+                    Clicked="btnUserLogin_Clicked"/>
         </StackLayout>
         <StackLayout VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand"

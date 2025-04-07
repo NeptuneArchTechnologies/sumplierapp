@@ -2,11 +2,90 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="sumplierapp.DashboardPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 BackgroundColor="Transparent"
+                 Padding="5">
+        <StackLayout VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="50"
+                     MinimumHeightRequest="50"
+                     BackgroundColor="Transparent"
+                     Orientation="Horizontal">
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="Start"
+                         WidthRequest="100"
+                         MinimumWidthRequest="100"
+                         BackgroundColor="Transparent">
+                <Label Text="Sumplier"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       FontSize="Large"
+                       TextColor="Black"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Transparent">
+
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="End"
+                         WidthRequest="100"
+                         MinimumWidthRequest="100"
+                         BackgroundColor="Transparent"
+                         Orientation="Vertical">
+                <Label x:Name="currentUserName"
+                       Text="Emre BEKTAŞ"
+                       VerticalOptions="StartAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalTextAlignment="Start"
+                       HorizontalTextAlignment="Center"
+                       FontSize="Small" 
+                       TextColor="Black"/>
+                <Switch x:Name="statusChangeSwitch"
+                        VerticalOptions="End"
+                        HorizontalOptions="CenterAndExpand"
+                        OnColor="White"
+                        ThumbColor="Green"/>
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent"
+                     Orientation="Vertical">
+            <Button x:Name="btnNewOrder"
+                    Text="Yeni Sipariş"
+                    TextTransform="None"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    FontSize="Medium"
+                    CornerRadius="10"
+                    Clicked="btnNewOrder_Clicked"/>
+            <Button x:Name="btnOldOrder"
+                    Text="Geçmiş Siparişler"
+                    TextTransform="None"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    FontSize="Medium"
+                    CornerRadius="10"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="End"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="50"
+                     MinimumHeightRequest="50"
+                     BackgroundColor="Transparent">
+            <Label Text="Powered By Neptune Arch Technologies"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Micro"
+                   TextColor="Black"/>
+            <Label Text="v1"
+                   VerticalOptions="StartAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Micro"
+                   TextColor="Black"/>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

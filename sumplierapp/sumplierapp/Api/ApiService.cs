@@ -35,7 +35,6 @@ namespace sumplierapp.Api
 
         }
 
-
         public async void GetUserLogin(string userMail, string userPassword, Action<User> onSuccess, Action<string> onFail)
         {
             var client = new HttpClient();

@@ -36,7 +36,7 @@ namespace sumplierapp
             }
         }
 
-        public async void btnCustomerLogin_Clicked(object sender, EventArgs e)
+        public void btnCustomerLogin_Clicked(object sender, EventArgs e)
         {
             // Get the mail and password
             string email = emailEntry.Text;

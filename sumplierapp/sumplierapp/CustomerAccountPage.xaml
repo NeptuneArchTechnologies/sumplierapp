@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="sumplierapp.CustomerAccountPage"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             BackgroundColor="Transparent">
+    <Frame VerticalOptions="Center"
+           HorizontalOptions="Center"
+           HeightRequest="500"
+           MinimumHeightRequest="500"
+           WidthRequest="400"
+           MinimumWidthRequest="400"
+           BackgroundColor="White"
+           Padding="5"
+           Margin="5"
+           CornerRadius="10"
+           HasShadow="True">
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="20"
+                         MinimumHeightRequest="20">
+                <Label Text="Lütfen hesap seçiniz"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <flv:FlowListView x:Name="customerAccountFlowListView"
+                                  SeparatorColor="DodgerBlue"
+                                  SeparatorVisibility="Default"
+                                  FlowColumnCount="1"
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="FillAndExpand"
+                                  FlowItemTapped="customerAccountFlowListView_FlowItemTapped">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <StackLayout VerticalOptions="FillAndExpand"
+                                         HorizontalOptions="FillAndExpand"
+                                         Orientation="Horizontal">
+                                <Label Text="{Binding AccountCode}"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="Start"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Medium"
+                                       TextColor="Black"
+                                       WidthRequest="100"
+                                       MinimumWidthRequest="100"/>
+                                <Label Text="{Binding AccountName}"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Medium"
+                                       TextColor="Black"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+                </flv:FlowListView>
+            </StackLayout>
+            <StackLayout VerticalOptions="End"
+                         HorizontalOptions="FillAndExpand">
+                <Button x:Name="btnClose"
+                        Text="kapat"
+                        TextTransform="None"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        FontSize="Medium"
+                        CornerRadius="10"
+                        Clicked="btnClose_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</ContentPage>

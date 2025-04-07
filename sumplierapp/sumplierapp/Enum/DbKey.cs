@@ -7,6 +7,7 @@ namespace sumplierapp.Enum
     public enum DbKey
     {
         Customer,
+        Accounts,
         User,
         Menu,
         Category,
