@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using sumplierapp.Model;
 using Xamarin.Forms;
@@ -125,6 +126,12 @@ namespace sumplierapp.Configs
                 }
             }
             return null;
+        }
+
+        // GetAllAccounts
+        public List<CustomerAccount> GetAllAccounts()
+        {
+            return accountMap.Values.ToList();
         }
 
         // GetDefaultMenu
