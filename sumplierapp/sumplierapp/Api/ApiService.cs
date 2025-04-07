@@ -4,6 +4,8 @@ using System;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Text;
 
 namespace sumplierapp.Api
 {
@@ -136,6 +138,31 @@ namespace sumplierapp.Api
             catch (Exception ex)
             {
                 onFail?.Invoke(ex.Message); // Hata durumunda onFail delegate'ini çağır
+            }
+        }
+
+        public async Task PostGeoLocation(string geoLocationJson, Action onSuccess, Action<string> onFailure)
+        {
+            var client = new HttpClient();
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://api.sumplier.com/SumplierAPI/UsersGeoLocation/PostGeoLocation");
+                request.Content = new StringContent(geoLocationJson, Encoding.UTF8, "application/json");
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode(); // 2xx status codes
+
+                string responseContent = await response.Content.ReadAsStringAsync();
+
+                // Başarılı işlemde OnSuccess callback çağrılır
+                onSuccess?.Invoke();
+                Console.WriteLine("Konum gönderildi, cevap: " + responseContent);
+            }
+            catch (Exception ex)
+            {
+                // Başarısız işlemde OnFailure callback çağrılır
+                onFailure?.Invoke($"Konum gönderimi sırasında hata: {ex.Message}");
+                Console.WriteLine("Konum gönderimi sırasında hata: " + ex.Message);
             }
         }
 
