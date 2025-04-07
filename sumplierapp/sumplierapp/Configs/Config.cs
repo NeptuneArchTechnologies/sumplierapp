@@ -32,6 +32,7 @@ namespace sumplierapp.Configs
 
         private Customer currentCustomer;
         private CustomerAccount currentCustomerAccount;
+        private CustomerCategory currentCustomerCategory;
         private User currentUser;
         private Dictionary<long, CustomerMenu> menuMap = new Dictionary<long, CustomerMenu>();
         private Dictionary<long, CustomerCategory> categoryMap = new Dictionary<long, CustomerCategory>();
@@ -77,6 +78,16 @@ namespace sumplierapp.Configs
         public CustomerAccount GetCurrentAccountName()
         {
             return currentCustomerAccount;
+        }
+
+        public void SetCurrentCategoryCode(CustomerCategory customerCategory)
+        {
+            currentCustomerCategory = customerCategory;
+        }
+
+        public CustomerCategory GetCurrentCategoryCode()
+        {
+            return currentCustomerCategory;
         }
 
         // CheckSetMenus

@@ -1,35 +1,160 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="sumplierapp.MenuPage">
     <StackLayout VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand"
-                 BackgroundColor="Red">
-        <Label x:Name="AccountCode"/>
-        <Label x:Name="AccountName"/>
-        <StackLayout VerticalOptions="FillAndExpand"
+                 BackgroundColor="Transparent"
+                 Padding="5">
+        <StackLayout VerticalOptions="Start"
                      HorizontalOptions="FillAndExpand"
-                     BackgroundColor="Green"
-                     Orientation="Horizontal">
-            <StackLayout VerticalOptions="FillAndExpand"
-                         HorizontalOptions="Start"
-                         WidthRequest="80"
-                         MinimumWidthRequest="80"
-                         BackgroundColor="Purple">
-                
-            </StackLayout>
-            <StackLayout VerticalOptions="FillAndExpand"
+                     HeightRequest="45"
+                     MinimumHeightRequest="44"
+                     Orientation="Vertical">
+            <StackLayout VerticalOptions="Start"
                          HorizontalOptions="FillAndExpand"
-                         BackgroundColor="Orange">
-                
+                         BackgroundColor="Transparent"
+                         HeightRequest="25"
+                         MinimumHeightRequest="25"
+                         Margin="0,0,0,-3"
+                         Orientation="Horizontal">
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="Start"
+                             WidthRequest="100"
+                             MinimumWidthRequest="100">
+                    <Label Text="Hesap Kodu"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="Start"
+                             WidthRequest="10"
+                             MinimumWidthRequest="10">
+                    <Label Text=":"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                    <Label x:Name="AccountCode"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Transparent"
+                         HeightRequest="25"
+                         MinimumHeightRequest="25"
+                         Margin="0,-3,0,0"
+                         Orientation="Horizontal">
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="Start"
+                             WidthRequest="100"
+                             MinimumWidthRequest="100">
+                    <Label Text="Hesap Adı"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="Start"
+                             WidthRequest="10"
+                             MinimumWidthRequest="10">
+                    <Label Text=":"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                    <Label x:Name="AccountName"/>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent"
+                     Orientation="Horizontal">
+            <ScrollView VerticalOptions="FillAndExpand"
+                        HorizontalOptions="Start"
+                        WidthRequest="100"
+                        MinimumWidthRequest="100"
+                        BackgroundColor="Transparent"
+                        Orientation="Vertical">
+                <StackLayout x:Name="CategoryLayout"
+                             VerticalOptions="FillAndExpand"
+                             HorizontalOptions="Start"
+                             WidthRequest="100"
+                             MinimumWidthRequest="100"
+                             BackgroundColor="Transparent"
+                             Orientation="Vertical">
+
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Transparent">
+                <flv:FlowListView x:Name="productFlowListView"
+                                  SeparatorColor="DodgerBlue"
+                                  SeparatorVisibility="Default"
+                                  FlowColumnCount="2"
+                                  RowHeight="80"
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="FillAndExpand"
+                                  FlowItemTapped="productFlowListView_FlowItemTapped">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <StackLayout VerticalOptions="FillAndExpand"
+                                         HorizontalOptions="FillAndExpand"
+                                         Orientation="Vertical">
+                                <Label Text="{Binding ProductCode}"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Small"
+                                       TextColor="Black"
+                                       WidthRequest="100"
+                                       MinimumWidthRequest="100"/>
+                                <Label Text="{Binding ProductName}"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Small"
+                                       TextColor="Black"/>
+                                <Label Text="{Binding Price}"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
+                                       FontSize="Small"
+                                       TextColor="Black"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+                </flv:FlowListView>
+            </StackLayout>
+        </StackLayout>
+        <Label Text="Sepet"/>
         <StackLayout VerticalOptions="End"
                      HorizontalOptions="FillAndExpand"
                      HeightRequest="200"
                      MinimumHeightRequest="200"
-                     BackgroundColor="Blue">
-            
+                     BackgroundColor="Transparent">
+
+        </StackLayout>
+        <StackLayout VerticalOptions="End"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="50"
+                     MinimumHeightRequest="50"
+                     BackgroundColor="Transparent">
+            <Button x:Name="btnSendOrder"
+                    Text="Sipariş Gönder"
+                    TextTransform="None"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    FontSize="Medium"
+                    CornerRadius="10"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

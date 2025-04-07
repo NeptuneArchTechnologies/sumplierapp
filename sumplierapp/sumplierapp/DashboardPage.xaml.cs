@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using sumplierapp.Api;
+using sumplierapp.Configs;
 using sumplierapp.Model;
 using sumplierapp.Threads;
 using System;
@@ -21,6 +22,7 @@ namespace sumplierapp
         {
             InitializeComponent();
             locationThread = new LocationThread();
+            currentUserName.Text = Config.Instance.GetCurrentUser().Name+" "+ Config.Instance.GetCurrentUser().Surname;
         }
         protected override async void OnAppearing()
         {

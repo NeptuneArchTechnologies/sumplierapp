@@ -36,8 +36,8 @@ namespace sumplierapp
                 // Must handle error cases
             }
 
-            //currentState = SplashState.Start;
-            //ContinueNextStep();
+            currentState = SplashState.Start;
+            ContinueNextStep();
 
         }
 
@@ -53,9 +53,11 @@ namespace sumplierapp
                     // Menüleri aldıktan sonra Categories'e geçiyoruz
                     Console.WriteLine("Menus state: Fetching menus...");
                     ProgressIcon.IsVisible = true;
+                    Task.Delay(5000);
                     PercentLabel.Text = "%25";
                     StatusText.Text = "Menü Yükleniyor...";
                     currentState = SplashState.Menus;
+                    Task.Delay(5000);
                     fetchMenus();
                     break;
 
@@ -65,6 +67,7 @@ namespace sumplierapp
                     PercentLabel.Text = "%37";
                     StatusText.Text = "Kategoriler Yükleniyor...";
                     currentState = SplashState.Categories;
+                    Task.Delay(5000);
                     fetchCategories();
                     break;
 
@@ -74,6 +77,7 @@ namespace sumplierapp
                     PercentLabel.Text = "%50";
                     StatusText.Text = "Ürünler Yükleniyor...";
                     currentState = SplashState.Products;
+                    Task.Delay(5000);
                     fetchProducts();
                     break;
 
@@ -83,6 +87,7 @@ namespace sumplierapp
                     PercentLabel.Text = "%60";
                     StatusText.Text = "Hesaplar Yükleniyor...";
                     currentState = SplashState.Accounts;
+                    Task.Delay(5000);
                     fetchAccounts();
                     break;
 
@@ -93,6 +98,7 @@ namespace sumplierapp
                     StatusText.Text = "Yükleme Tamamlandı...";
                     ProgressIcon.IsVisible = false;
                     currentState = SplashState.Done;
+                    Task.Delay(5000);
                     OnConfigDone();
                     break;
 

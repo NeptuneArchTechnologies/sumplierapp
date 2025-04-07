@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Views;
 
 namespace sumplierapp.Droid
 {
@@ -15,6 +16,7 @@ namespace sumplierapp.Droid
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            Window.AddFlags(Android.Views.WindowManagerFlags.Fullscreen);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
@@ -23,6 +25,30 @@ namespace sumplierapp.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            KeepSystemUIHidden();
+        }
+
+        [Obsolete]
+        private void HideSystemUI()
+        {
+            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)(
+                SystemUiFlags.LayoutStable | 
+                SystemUiFlags.LayoutHideNavigation | 
+                SystemUiFlags.LayoutFullscreen | 
+                SystemUiFlags.HideNavigation | 
+                SystemUiFlags.Fullscreen | 
+                SystemUiFlags.ImmersiveSticky
+            );
+        }
+        private void KeepSystemUIHidden()
+        {
+            Handler handler = new Handler();
+            handler.PostDelayed(() => { HideSystemUI(); KeepSystemUIHidden(); }, 100);
         }
     }
 }
