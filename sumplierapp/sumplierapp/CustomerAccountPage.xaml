@@ -66,8 +66,8 @@
                 <Button x:Name="btnClose"
                         Text="Kapat"
                         TextTransform="None"
-                        BackgroundColor="Red"
-                        TextColor="White"
+                        BackgroundColor="DarkOrange"
+                        TextColor="Black"
                         FontSize="Medium"
                         CornerRadius="10"
                         Clicked="btnClose_Clicked"/>

@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace sumplierapp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuPage : ContentPage
+    public partial class OrderPage : ContentPage
     {
-        public MenuPage()
+        public OrderPage()
         {
             InitializeComponent();
             AccountCode.Text = Config.Instance.GetCurrentAccountCode().AccountCode.ToString();
@@ -32,8 +32,8 @@ namespace sumplierapp
                 categoryButton.VerticalOptions = LayoutOptions.Start;
                 categoryButton.HorizontalOptions = LayoutOptions.FillAndExpand;
                 categoryButton.CornerRadius = 10;
-                categoryButton.BackgroundColor = Color.DodgerBlue;
-                categoryButton.TextColor = Color.White;
+                categoryButton.BackgroundColor = Color.DarkOrange;
+                categoryButton.TextColor = Color.Black;
                 categoryButton.TextTransform = TextTransform.None;
                 categoryButton.Clicked += CategoryButton_Clicked;
 
@@ -52,6 +52,16 @@ namespace sumplierapp
         private void productFlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
 
+        }
+
+        private void btnContinue_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new BasketPage());
+        }
+
+        private void btnBasket_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new BasketPage());
         }
     }
 }

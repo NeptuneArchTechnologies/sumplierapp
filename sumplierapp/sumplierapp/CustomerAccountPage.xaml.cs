@@ -41,7 +41,7 @@ namespace sumplierapp
             };
             Config.Instance.SetCurrentAccountCode(selectedAccount);
             Config.Instance.SetCurrentAccountName(selectedAccount);
-            Navigation.PushModalAsync(new MenuPage());
+            Navigation.PushModalAsync(new OrderPage());
         }
     }
 }

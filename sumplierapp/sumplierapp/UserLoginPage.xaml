@@ -24,16 +24,28 @@
                    Text="1"/>
             <Button x:Name="btnUserLoging"
                     Text="Giriş Yap"
-                    BackgroundColor="DodgerBlue"
-                    TextColor="white"
+                    BackgroundColor="DarkOrange"
+                    TextColor="Black"
                     TextTransform="None"
-                    CornerRadius="30"
+                    CornerRadius="10"
                     Clicked="btnUserLogin_Clicked"/>
         </StackLayout>
         <StackLayout VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand"
                  BackgroundColor="Transparent">
 
+        </StackLayout>
+        <StackLayout VerticalOptions="End"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="50"
+                     MinimumHeightRequest="50"
+                     BackgroundColor="Transparent">
+            <Label x:Name="DeviceCode"
+                   Text="Powered By Neptune Arch Technologies"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Micro"
+                   TextColor="Black"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

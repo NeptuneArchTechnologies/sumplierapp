@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="sumplierapp.BasketPage"
+             BackgroundColor="Transparent">
+    <Frame VerticalOptions="End"
+           HorizontalOptions="Center"
+           HeightRequest="550"
+           MinimumHeightRequest="550"
+           WidthRequest="400"
+           MinimumWidthRequest="400"
+           BackgroundColor="White"
+           Padding="5"
+           Margin="5"
+           CornerRadius="10">
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical">
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         MinimumHeightRequest="40"
+                         BackgroundColor="Transparent"
+                         Orientation="Horizontal">
+                <Label Text="Sepet"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Start"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <ImageButton x:Name="btnClose"
+                             Source="close_icon"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="End"
+                             HeightRequest="40"
+                             MinimumHeightRequest="40"
+                             WidthRequest="40"
+                             MinimumWidthRequest="40"
+                             BackgroundColor="Transparent"
+                             Clicked="btnClose_Clicked"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         BackgroundColor="Transparent">
+                
+            </StackLayout>
+            <StackLayout VerticalOptions="End"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="50"
+                         MinimumHeightRequest="50"
+                         BackgroundColor="Transparent">
+                <Button x:Name="btnPayment"
+                        Text="Ödeme"
+                        TextTransform="None"
+                        BackgroundColor="DarkOrange"
+                        TextColor="Black"
+                        FontSize="Medium"
+                        CornerRadius="10"
+                        Clicked="btnPayment_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</ContentPage>

@@ -15,7 +15,7 @@ namespace sumplierapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SplashPage : ContentPage
     {
-
+        private bool _UserIsActive;
         private Customer currentCustomer = Config.Instance.GetCurrentCustomer();
         private User currentUser = Config.Instance.GetCurrentUser();
 
@@ -26,10 +26,10 @@ namespace sumplierapp
         internal enum SplashState { Start, Menus, Categories, Products, Accounts, Done }
 
         private SplashState currentState;
-        public SplashPage()
+        public SplashPage(bool UserIsActive)
         {
             InitializeComponent();
-
+            _UserIsActive = UserIsActive;
             if (currentUser == null || currentCustomer == null)
             {
 
@@ -40,7 +40,6 @@ namespace sumplierapp
             ContinueNextStep();
 
         }
-
         public void ContinueNextStep()
         {
 
@@ -53,7 +52,7 @@ namespace sumplierapp
                     // Menüleri aldıktan sonra Categories'e geçiyoruz
                     Console.WriteLine("Menus state: Fetching menus...");
                     ProgressIcon.IsVisible = true;
-                    Task.Delay(5000);
+                    Task.Delay(10000);
                     PercentLabel.Text = "%25";
                     StatusText.Text = "Menü Yükleniyor...";
                     currentState = SplashState.Menus;
@@ -104,7 +103,6 @@ namespace sumplierapp
 
             }
         }
-
         private SplashState GetNextState()
         {
 
@@ -129,7 +127,6 @@ namespace sumplierapp
                     return SplashState.Start;
             }
         }
-
         private void fetchMenus()
         {
 
@@ -155,7 +152,6 @@ namespace sumplierapp
                     Console.WriteLine($"Giriş başarısız: {errorMessage}");
                 });
         }
-
         private void fetchCategories()
         {
 
@@ -180,7 +176,6 @@ namespace sumplierapp
                     Console.WriteLine($"Giriş başarısız: {errorMessage}");
                 });
         }
-
         private void fetchProducts()
         {
 
@@ -205,7 +200,6 @@ namespace sumplierapp
                     Console.WriteLine($"Giriş başarısız: {errorMessage}");
                 });
         }
-
         private void fetchAccounts()
         {
 
@@ -230,7 +224,6 @@ namespace sumplierapp
                     Console.WriteLine($"Giriş başarısız: {errorMessage}");
                 });
         }
-
         private void OnConfigDone()
         {
 
@@ -239,8 +232,7 @@ namespace sumplierapp
             Config.Instance.CheckSetProducts(productList);
             Config.Instance.CheckSetAccounts(accountList);
 
-            Navigation.PushModalAsync(new DashboardPage());
+            Navigation.PushModalAsync(new DashboardPage(_UserIsActive));
         }
-
     }
 }

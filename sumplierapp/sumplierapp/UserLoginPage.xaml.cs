@@ -3,7 +3,7 @@ using sumplierapp.Api;
 using sumplierapp.Configs;
 using sumplierapp.Enum;
 using sumplierapp.Model;
-﻿using sumplierapp.Api;
+using sumplierapp.Api;
 using sumplierapp.Enum;
 using System;
 using System.Collections.Generic;
@@ -20,14 +20,14 @@ namespace sumplierapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserLoginPage : ContentPage
     {
-        public UserLoginPage()//Bir önceki sayfadan gelen veri buraya geliyor
+        public UserLoginPage()
         {
             InitializeComponent();
+            DeviceCode.Text = Plugin.DeviceInfo.CrossDeviceInfo.Current.Id;
         }
 
         private void btnUserLogin_Clicked(object sender, EventArgs e)
         {
-
             // Get the mail and password
             string email = emailEntry.Text;
             string password = passwordEntry.Text;
@@ -36,23 +36,21 @@ namespace sumplierapp
 
             // Inline ApiCallBacks
             apiService.GetUserLogin(email, password,
-                user => {
+                user =>
+                {
 
                     if (user != null)
                     {
-
                         Console.WriteLine($"Giriş başarılı {user}");
                         DataStorage.Instance.SaveModel(DbKey.User.Name(), user);
                         Config.Instance.SetCurrentUser(user);
-                        Navigation.PushModalAsync(new SplashPage());
+                        Navigation.PushModalAsync(new SplashPage(user.IsActive));
                     }
-
                 },
-                errorMessage => {
+                errorMessage =>
+                {
                     Console.WriteLine($"Giriş başarısız: {errorMessage}");
                 });
         }
-
-        
     }
 }

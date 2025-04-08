@@ -24,7 +24,7 @@ namespace sumplierapp
         public CustomerLoginPage()
         {
             InitializeComponent();
-
+            DeviceCode.Text = Plugin.DeviceInfo.CrossDeviceInfo.Current.Id;
             // Check if we got Customer data on out locale...
 
             Customer customer = DataStorage.Instance.GetModel<Customer>(DbKey.Customer.Name());

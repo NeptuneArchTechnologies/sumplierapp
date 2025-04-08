@@ -20,16 +20,28 @@
             <Entry x:Name="passwordEntry" Placeholder="Şifre"/>
             <Button x:Name="btnCustomerLoging"
                     Text="Giriş Yap"
-                    BackgroundColor="DodgerBlue"
-                    TextColor="white"
+                    BackgroundColor="DarkOrange"
+                    TextColor="Black"
                     TextTransform="None"
-                    CornerRadius="30"
+                    CornerRadius="10"
                     Clicked="btnCustomerLogin_Clicked"/>
         </StackLayout>
         <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
                      BackgroundColor="Transparent">
 
+        </StackLayout>
+        <StackLayout VerticalOptions="End"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="50"
+                     MinimumHeightRequest="50"
+                     BackgroundColor="Transparent">
+            <Label x:Name="DeviceCode"
+                   Text="Powered By Neptune Arch Technologies"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Micro"
+                   TextColor="Black"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>
