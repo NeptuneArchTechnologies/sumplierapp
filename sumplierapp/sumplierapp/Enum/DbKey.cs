@@ -10,6 +10,7 @@ namespace sumplierapp.Enum
         Accounts,
         User,
         Menu,
+        Device,
         Category,
         Product,
         Settings

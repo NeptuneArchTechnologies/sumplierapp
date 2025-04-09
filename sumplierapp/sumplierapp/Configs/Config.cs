@@ -34,6 +34,7 @@ namespace sumplierapp.Configs
         private CustomerAccount currentCustomerAccount;
         private CustomerCategory currentCustomerCategory;
         private User currentUser;
+        private CustomerDevice currentDevice;
         private Dictionary<long, CustomerMenu> menuMap = new Dictionary<long, CustomerMenu>();
         private Dictionary<long, CustomerCategory> categoryMap = new Dictionary<long, CustomerCategory>();
         private Dictionary<long, CustomerProduct> productMap = new Dictionary<long, CustomerProduct>();
@@ -212,8 +213,6 @@ namespace sumplierapp.Configs
             return menus;
         }
 
-
-
         // GetCategoryProducts
         public List<CustomerProduct> GetCategoryProducts(CustomerCategory category)
         {
@@ -232,5 +231,16 @@ namespace sumplierapp.Configs
             return products;
         }
 
+        // SetCurrentDevice
+        public void SetCurrentDevice(CustomerDevice mDevice)
+        {
+            this.currentDevice = mDevice;    
+        }
+
+        // GetCurrentDevice
+        public CustomerDevice GetCurrentDevice() {
+
+            return currentDevice;
+        }
     }
 }

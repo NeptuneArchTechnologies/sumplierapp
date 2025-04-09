@@ -165,5 +165,28 @@ namespace sumplierapp.Api
             }
         }
 
+        public async void PostCustomerDevice(string deviceJson, Action<CustomerDevice> onSuccess, Action<string> onFailure)
+        {
+            var client = new HttpClient();
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://api.sumplier.com/SumplierAPI/CustomerDevice/PostCompanyDevice");
+                request.Content = new StringContent(deviceJson, Encoding.UTF8, "application/json");
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                string responseContent = await response.Content.ReadAsStringAsync();
+                CustomerDevice device = JsonConvert.DeserializeObject<CustomerDevice>(responseContent);
+                onSuccess?.Invoke(device);
+
+            }
+            catch (Exception ex)
+            {
+                // Başarısız işlemde OnFailure callback çağrılır
+                onFailure?.Invoke($"Cihaz gönderilirken bir hata oluştu: {ex.Message}");
+            }
+        }
+
     }
 }

@@ -38,7 +38,7 @@ namespace sumplierapp.Threads
             companyCode = customer.CompanyCode;
             resellerCode = customer.ResellerCode;
             customerCode = customer.CustomerCode;
-            deviceCode = Plugin.DeviceInfo.CrossDeviceInfo.Current.Id;
+            deviceCode = Config.Instance.GetCurrentDevice().deviceCode;
             userCode = user.UserCode;
         }
 

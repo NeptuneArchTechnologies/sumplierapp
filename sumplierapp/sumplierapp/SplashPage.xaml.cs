@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 using sumplierapp.Configs;
 using sumplierapp.Api;
 using Xamarin.Essentials;
+using sumplierapp.LocalDatabase;
+using sumplierapp.Enum;
+using Newtonsoft.Json;
 
 namespace sumplierapp
 {
@@ -23,7 +26,9 @@ namespace sumplierapp
         private List<CustomerCategory> categoryList = null;
         private List<CustomerProduct> productList = null;
         private List<CustomerAccount> accountList = null;
-        internal enum SplashState { Start, Menus, Categories, Products, Accounts, Done }
+
+        private CustomerDevice mDevice = DataStorage.Instance.GetModel<CustomerDevice>(DbKey.Device.Name());
+        internal enum SplashState { Start, Device, Menus, Categories, Products, Accounts, Done }
 
         private SplashState currentState;
         public SplashPage(bool UserIsActive)
@@ -60,10 +65,22 @@ namespace sumplierapp
                     fetchMenus();
                     break;
 
+                case SplashState.Device:
+                    // Menüleri aldıktan sonra Categories'e geçiyoruz
+                    Console.WriteLine("Device State: Fetching menus...");
+                    ProgressIcon.IsVisible = true;
+                    Task.Delay(10000);
+                    PercentLabel.Text = "%40";
+                    StatusText.Text = "Cihaz kontrol ediliyor...";
+                    currentState = SplashState.Menus;
+                    Task.Delay(5000);
+                    CheckSendDevice();
+                    break;
+
                 case SplashState.Categories:
                     // Kategoriler geldikten sonra Products'a geçiyoruz
                     Console.WriteLine("Categories state: Fetching categories...");
-                    PercentLabel.Text = "%37";
+                    PercentLabel.Text = "%50";
                     StatusText.Text = "Kategoriler Yükleniyor...";
                     currentState = SplashState.Categories;
                     Task.Delay(5000);
@@ -73,7 +90,7 @@ namespace sumplierapp
                 case SplashState.Products:
                     // Ürünler geldikten sonra Accounts'a geçiyoruz
                     Console.WriteLine("Products state: Fetching products...");
-                    PercentLabel.Text = "%50";
+                    PercentLabel.Text = "%70";
                     StatusText.Text = "Ürünler Yükleniyor...";
                     currentState = SplashState.Products;
                     Task.Delay(5000);
@@ -83,7 +100,7 @@ namespace sumplierapp
                 case SplashState.Accounts:
                     // Hesaplar geldikten sonra Done state'ine geçiyoruz
                     Console.WriteLine("Accounts state: Fetching accounts...");
-                    PercentLabel.Text = "%60";
+                    PercentLabel.Text = "%85";
                     StatusText.Text = "Hesaplar Yükleniyor...";
                     currentState = SplashState.Accounts;
                     Task.Delay(5000);
@@ -109,6 +126,9 @@ namespace sumplierapp
             switch (currentState)
             {
                 case SplashState.Start:
+                    return SplashState.Device;
+
+                case SplashState.Device:
                     return SplashState.Menus;
 
                 case SplashState.Menus:
@@ -224,6 +244,59 @@ namespace sumplierapp
                     Console.WriteLine($"Giriş başarısız: {errorMessage}");
                 });
         }
+
+        private void CheckSendDevice()
+        {
+
+            if (mDevice == null) {
+
+                mDevice = CreateNewDevice();
+            
+            }
+
+            if (mDevice != null) {
+
+                var apiService = new ApiService();
+
+                string json = JsonConvert.SerializeObject(mDevice);
+
+                // Inline ApiCallBacks
+                apiService.PostCustomerDevice(json,
+                   onSuccess: (device) =>
+                   {
+                       Console.WriteLine("Cihaz başarıyla gönderildi.");
+                       DataStorage.Instance.SaveModel(DbKey.Device.Name(), mDevice);
+                       Config.Instance.SetCurrentDevice(mDevice);
+                       ContinueNextStep();
+
+                   },
+                   onFailure: (errorMessage) =>
+                   {
+                       Console.WriteLine("Hata: " + errorMessage);
+                   }
+                );
+            }
+
+        }
+
+        private CustomerDevice CreateNewDevice()
+        {
+            CustomerDevice device = new CustomerDevice
+            {
+                id = 0,
+                companyCode = currentCustomer.CompanyCode,
+                customerCode = currentCustomer.CustomerCode,
+                resellerCode = currentCustomer.ResellerCode,
+                licenceCode = "",
+                printerName = "",
+                deviceCode = Plugin.DeviceInfo.CrossDeviceInfo.Current.Id,
+                lat = "",
+                lang = ""
+            }; 
+
+            return device;
+        }
+
         private void OnConfigDone()
         {
 
