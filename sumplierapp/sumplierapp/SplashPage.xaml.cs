@@ -47,10 +47,7 @@ namespace sumplierapp
         }
         public void ContinueNextStep()
         {
-
             SplashState nextState = GetNextState();
-
-
             switch (nextState)
             {
                 case SplashState.Menus:
@@ -66,13 +63,13 @@ namespace sumplierapp
                     break;
 
                 case SplashState.Device:
-                    // Menüleri aldıktan sonra Categories'e geçiyoruz
-                    Console.WriteLine("Device State: Fetching menus...");
+                    // Menüleri aldıktan sonra Device'ye geçiyoruz
+                    Console.WriteLine("Device State: Fetch devices...");
                     ProgressIcon.IsVisible = true;
                     Task.Delay(10000);
                     PercentLabel.Text = "%40";
                     StatusText.Text = "Cihaz kontrol ediliyor...";
-                    currentState = SplashState.Menus;
+                    currentState = SplashState.Device;
                     Task.Delay(5000);
                     CheckSendDevice();
                     break;
@@ -160,7 +157,7 @@ namespace sumplierapp
                     if (menuList != null && menuList.Count != 0)
                     {
 
-                        Console.WriteLine($"Menus gets successfully {menuList}");
+                        Console.WriteLine($"fetch Menus successfully {menuList}");
                         this.menusList = menuList;
                         ContinueNextStep();
 
@@ -169,7 +166,7 @@ namespace sumplierapp
                 },
                 errorMessage =>
                 {
-                    Console.WriteLine($"Giriş başarısız: {errorMessage}");
+                    Console.WriteLine($"fetch Menus fail: {errorMessage}");
                 });
         }
         private void fetchCategories()
@@ -185,7 +182,7 @@ namespace sumplierapp
                     if (categories != null && categories.Count != 0)
                     {
 
-                        Console.WriteLine($"Menus gets successfully {categories}");
+                        Console.WriteLine($"fetch Categories successfully {categories}");
                         this.categoryList = categories;
                         ContinueNextStep( );
                     }
@@ -193,7 +190,7 @@ namespace sumplierapp
                 },
                 errorMessage =>
                 {
-                    Console.WriteLine($"Giriş başarısız: {errorMessage}");
+                    Console.WriteLine($"fetch Categories fail: {errorMessage}");
                 });
         }
         private void fetchProducts()
@@ -209,7 +206,7 @@ namespace sumplierapp
                     if (products != null && products.Count != 0)
                     {
 
-                        Console.WriteLine($"Menus gets successfully {products}");
+                        Console.WriteLine($"fetch Products successfully: {products}");
                         this.productList = products;
                         ContinueNextStep();
                     }
@@ -217,7 +214,7 @@ namespace sumplierapp
                 },
                 errorMessage =>
                 {
-                    Console.WriteLine($"Giriş başarısız: {errorMessage}");
+                    Console.WriteLine($"fetch Products fail: {errorMessage}");
                 });
         }
         private void fetchAccounts()
@@ -233,7 +230,7 @@ namespace sumplierapp
                     if (accounts != null && accounts.Count != 0)
                     {
 
-                        Console.WriteLine($"Menus gets successfully {accounts}");
+                        Console.WriteLine($"fetch Accounts successfully: {accounts}");
                         this.accountList = accounts;
                         ContinueNextStep();
                     }
@@ -241,7 +238,7 @@ namespace sumplierapp
                 },
                 errorMessage =>
                 {
-                    Console.WriteLine($"Giriş başarısız: {errorMessage}");
+                    Console.WriteLine($"fetch Accounts fail: {errorMessage}");
                 });
         }
 
@@ -264,7 +261,7 @@ namespace sumplierapp
                 apiService.PostCustomerDevice(json,
                    onSuccess: (device) =>
                    {
-                       Console.WriteLine("Cihaz başarıyla gönderildi.");
+                       Console.WriteLine($"Check Send Device successfully: {device}");
                        DataStorage.Instance.SaveModel(DbKey.Device.Name(), mDevice);
                        Config.Instance.SetCurrentDevice(mDevice);
                        ContinueNextStep();
@@ -272,7 +269,8 @@ namespace sumplierapp
                    },
                    onFailure: (errorMessage) =>
                    {
-                       Console.WriteLine("Hata: " + errorMessage);
+                       Console.WriteLine("Check Send Device fail: " + errorMessage);
+                       ContinueNextStep();
                    }
                 );
             }
@@ -299,12 +297,10 @@ namespace sumplierapp
 
         private void OnConfigDone()
         {
-
             Config.Instance.CheckSetMenus(menusList);
             Config.Instance.CheckSetCategories(categoryList);
             Config.Instance.CheckSetProducts(productList);
             Config.Instance.CheckSetAccounts(accountList);
-
             Navigation.PushModalAsync(new DashboardPage(_UserIsActive));
         }
     }

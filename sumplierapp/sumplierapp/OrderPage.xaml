@@ -80,6 +80,27 @@
                          HeightRequest="50"
                          MinimumHeightRequest="50"
                          BackgroundColor="Transparent"
+                         Orientation="Horizontal">
+                <ImageButton x:Name="readBarcode"
+                             Source="barcode_icon"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Center"
+                             HeightRequest="40"
+                             MinimumHeightRequest="40"
+                             WidthRequest="40"
+                             MinimumWidthRequest="40"
+                             Padding="3"
+                             BackgroundColor="Transparent"
+                             Margin="0,0,0,0"
+                             Clicked="readBarcode_Clicked"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="End"
+                         WidthRequest="50"
+                         MinimumWidthRequest="50"
+                         HeightRequest="50"
+                         MinimumHeightRequest="50"
+                         BackgroundColor="Transparent"
                          Orientation="Vertical">
                 <Button x:Name="badgeCount"
                         Text="99"
@@ -93,8 +114,8 @@
                         CornerRadius="20"
                         TextColor="White"
                         VerticalOptions="Start"
-                        HorizontalOptions="Center"
-                        Margin="0,0,0,0"/>
+                        HorizontalOptions="End"
+                        Margin="0,0,0,-34"/>
                 <ImageButton x:Name="btnBasket"
                              Source="basket_icon"
                              VerticalOptions="CenterAndExpand"
@@ -105,7 +126,7 @@
                              MinimumWidthRequest="40"
                              Padding="3"
                              BackgroundColor="Transparent"
-                             Margin="0,-14.5,0,0"
+                             Margin="0,0,0,0"
                              Clicked="btnBasket_Clicked"/>
             </StackLayout>
         </StackLayout>

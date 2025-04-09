@@ -5,8 +5,8 @@
              BackgroundColor="Transparent">
     <Frame VerticalOptions="End"
            HorizontalOptions="Center"
-           HeightRequest="550"
-           MinimumHeightRequest="550"
+           HeightRequest="600"
+           MinimumHeightRequest="600"
            WidthRequest="400"
            MinimumWidthRequest="400"
            BackgroundColor="White"
@@ -28,6 +28,15 @@
                        HorizontalTextAlignment="Start"
                        FontSize="Medium"
                        TextColor="Black"/>
+                <ImageButton Source="trash_icon"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Center"
+                             HeightRequest="40"
+                             MinimumHeightRequest="40"
+                             WidthRequest="40"
+                             MinimumWidthRequest="40"
+                             BackgroundColor="Transparent"
+                             Margin="0,0,0,0"/>
                 <ImageButton x:Name="btnClose"
                              Source="close_icon"
                              VerticalOptions="CenterAndExpand"
@@ -41,8 +50,195 @@
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand"
                          HorizontalOptions="FillAndExpand"
-                         BackgroundColor="Transparent">
-                
+                         BackgroundColor="Transparent"
+                         Orientation="Vertical">
+                <StackLayout VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand"
+                             BackgroundColor="Green">
+
+                </StackLayout>
+                <StackLayout VerticalOptions="End"
+                             HorizontalOptions="FillAndExpand"
+                             HeightRequest="100"
+                             MinimumHeightRequest="100"
+                             BackgroundColor="Transparent"
+                             Orientation="Vertical">
+                    <StackLayout VerticalOptions="End"
+                                 HorizontalOptions="FillAndExpand"
+                                 HeightRequest="25"
+                                 MinimumHeightRequest="25"
+                                 BackgroundColor="Transparent"
+                                 Orientation="Horizontal">
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="Transparent">
+                            <Label Text="Ara Toplam"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     BackgroundColor="Transparent">
+                            <Label Text=":"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     WidthRequest="60"
+                                     MinimumWidthRequest="60"
+                                     BackgroundColor="Transparent">
+                            <Label x:Name="subTotal"
+                                   Text="0,00"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End"
+                                 HorizontalOptions="FillAndExpand"
+                                 HeightRequest="25"
+                                 MinimumHeightRequest="25"
+                                 BackgroundColor="Transparent"
+                                 Orientation="Horizontal"
+                                 Margin="0,-6,0,0">
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="Transparent">
+                            <Label Text="İndirim Toplam"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     BackgroundColor="Transparent">
+                            <Label Text=":"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     WidthRequest="60"
+                                     MinimumWidthRequest="60"
+                                     BackgroundColor="Transparent">
+                            <Label x:Name="discountTotal"
+                                   Text="0,00"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End"
+                                 HorizontalOptions="FillAndExpand"
+                                 HeightRequest="25"
+                                 MinimumHeightRequest="25"
+                                 BackgroundColor="Transparent"
+                                 Orientation="Horizontal"
+                                 Margin="0,-6,0,0">
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="Transparent">
+                            <Label Text="Kdv Toplam"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     BackgroundColor="Transparent">
+                            <Label Text=":"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     WidthRequest="60"
+                                     MinimumWidthRequest="60"
+                                     BackgroundColor="Transparent">
+                            <Label x:Name="taxTotal"
+                                   Text="0,00"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End"
+                                 HorizontalOptions="FillAndExpand"
+                                 HeightRequest="25"
+                                 MinimumHeightRequest="25"
+                                 BackgroundColor="Transparent"
+                                 Orientation="Horizontal"
+                                 Margin="0,-6,0,0">
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="Transparent">
+                            <Label Text="Genel Toplam"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     BackgroundColor="Transparent">
+                            <Label Text=":"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="End"
+                                     WidthRequest="60"
+                                     MinimumWidthRequest="60"
+                                     BackgroundColor="Transparent">
+                            <Label x:Name="generalTotal"
+                                   Text="0,00"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="End"
+                                   TextColor="Black"
+                                   FontSize="Small"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
             <StackLayout VerticalOptions="End"
                          HorizontalOptions="FillAndExpand"

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using sumplierapp.Enum;
 using sumplierapp.Model;
 using Xamarin.Forms;
 
@@ -29,7 +30,7 @@ namespace sumplierapp.Configs
         }
 
         private Config() { }
-
+        private int currentTicketState;
         private Customer currentCustomer;
         private CustomerAccount currentCustomerAccount;
         private CustomerCategory currentCustomerCategory;
@@ -38,7 +39,17 @@ namespace sumplierapp.Configs
         private Dictionary<long, CustomerMenu> menuMap = new Dictionary<long, CustomerMenu>();
         private Dictionary<long, CustomerCategory> categoryMap = new Dictionary<long, CustomerCategory>();
         private Dictionary<long, CustomerProduct> productMap = new Dictionary<long, CustomerProduct>();
-        private Dictionary<long, CustomerAccount> accountMap = new Dictionary<long, CustomerAccount>(); 
+        private Dictionary<long, CustomerAccount> accountMap = new Dictionary<long, CustomerAccount>();
+
+        public void SetCurrentTicketState(TicketStateEnum ticketStateEnum)
+        {
+            currentTicketState = (int)ticketStateEnum;
+        }
+
+        public Customer GetCurrentCustomer()
+        {
+            return currentCustomer;
+        }
 
         public void SetCurrentCustomer(Customer customer)
         {

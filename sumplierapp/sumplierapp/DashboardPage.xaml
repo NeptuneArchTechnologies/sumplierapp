@@ -48,7 +48,8 @@
                         VerticalOptions="End"
                         HorizontalOptions="CenterAndExpand"
                         OnColor="White"
-                        ThumbColor="Green"/>
+                        ThumbColor="Green"
+                        Toggled="statusChangeSwitch_Toggled"/>
             </StackLayout>
         </StackLayout>
         <StackLayout VerticalOptions="FillAndExpand"

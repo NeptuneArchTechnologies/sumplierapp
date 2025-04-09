@@ -17,9 +17,9 @@ namespace sumplierapp
         public OrderPage()
         {
             InitializeComponent();
-            AccountCode.Text = Config.Instance.GetCurrentAccountCode().AccountCode.ToString();
-            AccountName.Text = Config.Instance.GetCurrentAccountCode().AccountName.ToString();
-            GetCategory();
+            //AccountCode.Text = Config.Instance.GetCurrentAccountCode().AccountCode.ToString();
+            //AccountName.Text = Config.Instance.GetCurrentAccountCode().AccountName.ToString();
+            //GetCategory();
         }
         void GetCategory()
         {
@@ -36,7 +36,6 @@ namespace sumplierapp
                 categoryButton.TextColor = Color.Black;
                 categoryButton.TextTransform = TextTransform.None;
                 categoryButton.Clicked += CategoryButton_Clicked;
-
                 CategoryLayout.Children.Add(categoryButton);
             }
         }
@@ -62,6 +61,11 @@ namespace sumplierapp
         private void btnBasket_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new BasketPage());
+        }
+
+        private void readBarcode_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,16 +34,29 @@ namespace sumplierapp
         private void btnNewOrder_Clicked(object sender, EventArgs e)
         {
             Navigation.PushModalAsync(new CustomerAccountPage());
+            Config.Instance.SetCurrentTicketState((int)Enum.TicketStateEnum.New);
         }
 
         private void btnOldOrder_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new OldOrderPage());
         }
 
         private void btnMyTask_Clicked(object sender, EventArgs e)
         {
+            Navigation.PushModalAsync(new MyTaskPage());
+        }
 
+        private void statusChangeSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if(statusChangeSwitch.IsToggled == true)
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }
