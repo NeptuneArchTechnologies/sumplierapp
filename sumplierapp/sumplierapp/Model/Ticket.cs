@@ -34,19 +34,19 @@ namespace sumplierapp.Model
     {
         public int id { get; set; }
         public int ticketId { get; set; }
-        public int productCode { get; set; }
+        public long productCode { get; set; }
         public string barcode { get; set; }
         public string productName { get; set; }
-        public int quantity { get; set; }
-        public int price { get; set; }
-        public int discountPrice { get; set; }
-        public int totalPrice { get; set; }
+        public decimal quantity { get; set; }
+        public decimal price { get; set; }
+        public decimal discountPrice { get; set; }
+        public decimal totalPrice { get; set; }
         public int status { get; set; }
         public bool isChange { get; set; }
-        public int newQuantity { get; set; }
-        public int newPrice { get; set; }
-        public int newTotalPrice { get; set; }
-        public int companyCode { get; set; }
+        public decimal newQuantity { get; set; }
+        public decimal newPrice { get; set; }
+        public decimal newTotalPrice { get; set; }
+        public long companyCode { get; set; }
         public string deviceCode { get; set; }
         public bool isDeleted { get; set; }
     }

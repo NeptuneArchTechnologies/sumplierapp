@@ -1,4 +1,6 @@
-﻿using sumplierapp.Configs;
+﻿using Newtonsoft.Json;
+using sumplierapp.BasketManager;
+using sumplierapp.Configs;
 using sumplierapp.Model;
 using System;
 using System.Collections.Generic;
@@ -17,9 +19,15 @@ namespace sumplierapp
         public OrderPage()
         {
             InitializeComponent();
-            //AccountCode.Text = Config.Instance.GetCurrentAccountCode().AccountCode.ToString();
-            //AccountName.Text = Config.Instance.GetCurrentAccountCode().AccountName.ToString();
-            //GetCategory();
+            AccountCode.Text = Config.Instance.GetCurrentAccountCode().AccountCode.ToString();
+            AccountName.Text = Config.Instance.GetCurrentAccountCode().AccountName.ToString();
+            GetCategory();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            badgeCount.Text = BasketOrderManagers.Instance.BasketOrders.Count.ToString();
         }
         void GetCategory()
         {
@@ -47,10 +55,26 @@ namespace sumplierapp
             Config.Instance.SetCurrentCategoryCode(customerCategory);
             productFlowListView.FlowItemsSource = Config.Instance.GetCategoryProducts(Config.Instance.GetCurrentCategoryCode());
         }
+        public int GenerateTimeBasedId()
+        {
+            return int.Parse(DateTime.Now.ToString("HHmmssff"));
+        }
 
         private void productFlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
+            Config.Instance.SetCurrentBasketId(GenerateTimeBasedId());
+            var SelectedProduct = (CustomerProduct)e.Item;
+            var ticketOrder = new TicketOrder
+            {
+                id = Config.Instance.GetCurrentBasketId(),
+                productName = SelectedProduct.ProductName,
+                quantity = 1,
+                price = SelectedProduct.Price
+            };
 
+            ticketOrder.totalPrice = ticketOrder.price * ticketOrder.quantity;
+
+            BasketOrderManagers.Instance.AddTicketOrder(ticketOrder);
         }
 
         private void btnContinue_Clicked(object sender, EventArgs e)

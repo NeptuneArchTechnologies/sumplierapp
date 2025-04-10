@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="sumplierapp.BasketPage"
              BackgroundColor="Transparent">
     <Frame VerticalOptions="End"
@@ -28,7 +29,8 @@
                        HorizontalTextAlignment="Start"
                        FontSize="Medium"
                        TextColor="Black"/>
-                <ImageButton Source="trash_icon"
+                <ImageButton x:Name="allClear"
+                             Source="trash_icon"
                              VerticalOptions="CenterAndExpand"
                              HorizontalOptions="Center"
                              HeightRequest="40"
@@ -36,7 +38,8 @@
                              WidthRequest="40"
                              MinimumWidthRequest="40"
                              BackgroundColor="Transparent"
-                             Margin="0,0,0,0"/>
+                             Margin="0,0,0,0"
+                             Clicked="allClear_Clicked"/>
                 <ImageButton x:Name="btnClose"
                              Source="close_icon"
                              VerticalOptions="CenterAndExpand"
@@ -54,8 +57,54 @@
                          Orientation="Vertical">
                 <StackLayout VerticalOptions="FillAndExpand"
                              HorizontalOptions="FillAndExpand"
-                             BackgroundColor="Green">
-
+                             BackgroundColor="Transparent">
+                    <flv:FlowListView x:Name="basketOrderFlowListView"
+                                      FlowItemsSource="{Binding BasketOrders}"
+                                      SeparatorColor="DarkOrange"
+                                      SeparatorVisibility="Default"
+                                      FlowColumnCount="1"
+                                      VerticalOptions="FillAndExpand"
+                                      HorizontalOptions="FillAndExpand"
+                                      FlowItemTapped="basketOrderFlowListView_FlowItemTapped">
+                        <flv:FlowListView.FlowColumnTemplate>
+                            <DataTemplate>
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             HorizontalOptions="FillAndExpand"
+                                             Orientation="Horizontal">
+                                    <Label Text="{Binding id}"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="Start"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                           FontSize="Small"
+                                           TextColor="Black"
+                                           WidthRequest="100"
+                                           MinimumWidthRequest="100"/>
+                                    <Label Text="{Binding productName}"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                           FontSize="Small"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding quantity}"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                           FontSize="Small"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding totalPrice}"
+                                           VerticalOptions="FillAndExpand"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Start"
+                                           FontSize="Small"
+                                           TextColor="Black"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </flv:FlowListView.FlowColumnTemplate>
+                    </flv:FlowListView>
                 </StackLayout>
                 <StackLayout VerticalOptions="End"
                              HorizontalOptions="FillAndExpand"

@@ -31,6 +31,7 @@ namespace sumplierapp.Configs
 
         private Config() { }
         private int currentTicketState;
+        private int currentBasketId;
         private Customer currentCustomer;
         private CustomerAccount currentCustomerAccount;
         private CustomerCategory currentCustomerCategory;
@@ -46,9 +47,14 @@ namespace sumplierapp.Configs
             currentTicketState = (int)ticketStateEnum;
         }
 
-        public Customer GetCurrentCustomer()
+        public void SetCurrentBasketId(int basketId)
         {
-            return currentCustomer;
+            currentBasketId = basketId;
+        }
+
+        public int GetCurrentBasketId()
+        {
+            return currentBasketId;
         }
 
         public void SetCurrentCustomer(Customer customer)
