@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MyOrderPage.xaml.cs">
+      <DependentUpon>MyOrderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
@@ -41,10 +44,16 @@
     <EmbeddedResource Update="MyTaskPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="OldOrderPage.xaml">
+    <EmbeddedResource Update="MyOrderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OrderEditPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="OrderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PaymentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SplashPage.xaml">
@@ -57,5 +66,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="Messaging\" />
   </ItemGroup>
 </Project>

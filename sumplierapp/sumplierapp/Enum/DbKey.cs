@@ -13,7 +13,8 @@ namespace sumplierapp.Enum
         Device,
         Category,
         Product,
-        Settings
+        Settings,
+        Ticket
     }
 
     public static class DbKeyExtensions

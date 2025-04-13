@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="sumplierapp.PaymentPage"
+             BackgroundColor="LawnGreen">
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="EndAndExpand"
+                 HorizontalOptions="FillAndExpand">
+
+        </StackLayout>
+        <StackLayout VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand">
+            <Image x:Name="sendStatusIcon"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HeightRequest="100"
+                   MinimumHeightRequest="100"
+                   WidthRequest="100"
+                   MinimumWidthRequest="100"/>
+            <Label x:Name="status"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="Medium"
+                   FontFamily="{StaticResource SumplierRegular}"/>
+            <Label x:Name="orderCode"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="Medium"
+                   FontFamily="{StaticResource SumplierRegular}"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="EndAndExpand"
+                 HorizontalOptions="FillAndExpand">
+            <Button x:Name="btnClose"
+                    Text="Kapat"
+                    TextTransform="None"
+                    FontSize="Medium"
+                    FontFamily="{StaticResource SumplierRegular}"
+                    Clicked="btnClose_Clicked"
+                    CornerRadius="10"
+                    BackgroundColor="DarkOrange"
+                    TextColor="White"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

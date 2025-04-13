@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using sumplierapp.BasketManager;
 using sumplierapp.Configs;
+using sumplierapp.Enum;
 using sumplierapp.Model;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,12 @@ namespace sumplierapp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            badgeCount.Text = BasketOrderManagers.Instance.BasketOrders.Count.ToString();
+
+            MessagingCenter.Subscribe<BasketPage>(this, MessagingCenterEnum.OrderSuccess.ToString(), (sender) =>
+            {
+                Navigation.PopModalAsync();
+                MessagingCenter.Send(this, MessagingCenterEnum.AccountSelected.ToString());
+            });
         }
         void GetCategory()
         {
@@ -67,9 +73,22 @@ namespace sumplierapp
             var ticketOrder = new TicketOrder
             {
                 id = Config.Instance.GetCurrentBasketId(),
+                ticketId=0,
+                barcode = "0",
+                productCode = SelectedProduct.ProductCode,
                 productName = SelectedProduct.ProductName,
                 quantity = 1,
-                price = SelectedProduct.Price
+                price = SelectedProduct.Price,
+                discountPrice = Convert.ToInt64(0),
+                status = 0,
+                isChange = false,
+                newQuantity = Convert.ToInt64(0),
+                newPrice = Convert.ToInt64(0),
+                newTotalPrice = Convert.ToInt64(0),
+                rowId = GenerateTimeBasedId(),
+                companyCode = 1,
+                deviceCode =Config.Instance.GetCurrentDevice().deviceCode,
+                isDeleted = false
             };
 
             ticketOrder.totalPrice = ticketOrder.price * ticketOrder.quantity;

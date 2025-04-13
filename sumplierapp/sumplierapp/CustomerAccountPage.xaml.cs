@@ -22,6 +22,14 @@ namespace sumplierapp
             GetCustomerAccount();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<OrderPage>(this, MessagingCenterEnum.AccountSelected.ToString(), (sender) =>
+            {
+                Navigation.PopModalAsync();
+            });
+        }
         void GetCustomerAccount()
         {
             customerAccountFlowListView.FlowItemsSource = Config.Instance.GetAllAccounts();

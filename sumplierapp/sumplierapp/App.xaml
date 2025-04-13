@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="sumplierapp.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="SumplierRegular">
+                <On Platform="Android" Value="SumplierRegular.ttf#SumplierRegular" />
+                <On Platform="iOS" Value="SumplierRegular.ttf"/>
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

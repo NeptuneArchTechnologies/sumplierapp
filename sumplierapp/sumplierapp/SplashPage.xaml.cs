@@ -53,7 +53,7 @@ namespace sumplierapp
                 case SplashState.Menus:
                     // Menüleri aldıktan sonra Categories'e geçiyoruz
                     Console.WriteLine("Menus state: Fetching menus...");
-                    ProgressIcon.IsVisible = true;
+                    progressBar.IsVisible = true;
                     Task.Delay(10000);
                     PercentLabel.Text = "%25";
                     StatusText.Text = "Menü Yükleniyor...";
@@ -65,7 +65,7 @@ namespace sumplierapp
                 case SplashState.Device:
                     // Menüleri aldıktan sonra Device'ye geçiyoruz
                     Console.WriteLine("Device State: Fetch devices...");
-                    ProgressIcon.IsVisible = true;
+                    progressBar.IsVisible = true;
                     Task.Delay(10000);
                     PercentLabel.Text = "%40";
                     StatusText.Text = "Cihaz kontrol ediliyor...";
@@ -109,7 +109,7 @@ namespace sumplierapp
                     Console.WriteLine("Done state: All steps completed.");
                     PercentLabel.Text = "%100";
                     StatusText.Text = "Yükleme Tamamlandı...";
-                    ProgressIcon.IsVisible = false;
+                    progressBar.IsVisible = false;
                     currentState = SplashState.Done;
                     Task.Delay(5000);
                     OnConfigDone();
@@ -301,7 +301,7 @@ namespace sumplierapp
             Config.Instance.CheckSetCategories(categoryList);
             Config.Instance.CheckSetProducts(productList);
             Config.Instance.CheckSetAccounts(accountList);
-            Navigation.PushModalAsync(new DashboardPage(_UserIsActive));
+            Navigation.PushModalAsync(new DashboardPage());
         }
     }
 }

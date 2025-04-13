@@ -51,9 +51,9 @@ namespace sumplierapp.BasketManager
                 existing.isDeleted = updatedOrder.isDeleted;
             }
         }
-        public void DeleteTicketOrder(int id)
+        public void DeleteTicketOrderRowId(int rowId)
         {
-            var existing = BasketOrders.FirstOrDefault(x => x.id == id);
+            var existing = BasketOrders.FirstOrDefault(x => x.rowId == rowId);
             if (existing != null)
             {
                 BasketOrders.Remove(existing);
@@ -63,9 +63,9 @@ namespace sumplierapp.BasketManager
         {
             BasketOrders.Clear();
         }
-        public List<TicketOrder> GetByTicketId(int basketId)
+        public List<TicketOrder> GetTicketOrder()
         {
-            return BasketOrders.Where(x => x.id == basketId).ToList();
+            return BasketOrders.ToList();
         }
     }
 }

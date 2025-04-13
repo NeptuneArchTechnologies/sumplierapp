@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="sumplierapp.DashboardPage">
+             x:Class="sumplierapp.DashboardPage"
+             BackgroundColor="White">
     <StackLayout VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand"
                  BackgroundColor="Transparent"
@@ -12,77 +13,89 @@
                      MinimumHeightRequest="50"
                      BackgroundColor="Transparent"
                      Orientation="Horizontal">
-            <StackLayout VerticalOptions="FillAndExpand"
+            <ImageButton VerticalOptions="CenterAndExpand"
+                         Source="back_icon48"
+                         Padding="7,5,7,8"
                          HorizontalOptions="Start"
-                         WidthRequest="100"
-                         MinimumWidthRequest="100"
-                         BackgroundColor="Transparent">
-                <Label Text="Sumplier"
-                       VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       VerticalTextAlignment="Center"
-                       HorizontalTextAlignment="Start"
-                       FontSize="Large"
-                       TextColor="Black"/>
-            </StackLayout>
-            <StackLayout VerticalOptions="FillAndExpand"
-                         HorizontalOptions="FillAndExpand"
-                         BackgroundColor="Transparent">
-
-            </StackLayout>
-            <StackLayout VerticalOptions="FillAndExpand"
+                         CornerRadius="40"
+                         HeightRequest="40"
+                         MinimumHeightRequest="40"
+                         WidthRequest="40"
+                         MinimumWidthRequest="40"
+                         BackgroundColor="Silver"
+                         Margin="5,0,0,0"/>
+            <Image Source="sumplier_logo"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   Aspect="AspectFill"
+                   Margin="0,0,10,0"/>
+            <ImageButton VerticalOptions="CenterAndExpand"
                          HorizontalOptions="End"
-                         WidthRequest="150"
-                         MinimumWidthRequest="150"
-                         BackgroundColor="Transparent"
-                         Orientation="Vertical">
-                <Label x:Name="currentUserName"
-                       Text="Emre BEKTAŞ"
-                       VerticalOptions="StartAndExpand"
-                       HorizontalOptions="FillAndExpand"
-                       VerticalTextAlignment="Start"
-                       HorizontalTextAlignment="Center"
-                       FontSize="Small" 
-                       TextColor="Black"/>
-                <Switch x:Name="statusChangeSwitch"
-                        VerticalOptions="End"
-                        HorizontalOptions="CenterAndExpand"
-                        OnColor="White"
-                        ThumbColor="Green"
-                        Toggled="statusChangeSwitch_Toggled"/>
-            </StackLayout>
+                         Source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDOhSnjiXNYmnRiRwygZelxsVSySmcS7PTJw"
+                         Aspect="AspectFill"
+                         CornerRadius="40"
+                         HeightRequest="40"
+                         MinimumHeightRequest="40"
+                         WidthRequest="40"
+                         MinimumWidthRequest="40"
+                         BackgroundColor="Red"
+                         Margin="0,0,5,0"
+                         Padding="0"/>
         </StackLayout>
         <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
                      BackgroundColor="Transparent"
-                     Orientation="Vertical">
-            <Button x:Name="btnNewOrder"
-                    ImageSource="neworder_icon"
-                    Text="Yeni Sipariş"
+                     Orientation="Vertical"
+                     Padding="5,0,5,40">
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="40"
+                         MinimumHeightRequest="40"
+                         BackgroundColor="Blue"
+                         IsVisible="False">
+
+            </StackLayout>
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Vertical"
+                         BackgroundColor="Red"
+                         HeightRequest="120"
+                         MinimumHeightRequest="120"
+                         IsVisible="False">
+                
+            </StackLayout>
+            <Button x:Name="btnMyOrder"
+                    Text="Siparişlerim"
                     TextTransform="None"
-                    BackgroundColor="DarkOrange"
+                    BackgroundColor="Orange"
                     TextColor="Black"
                     FontSize="Medium"
+                    FontFamily="{StaticResource SumplierRegular}"
                     CornerRadius="10"
-                    Clicked="btnNewOrder_Clicked"/>
-            <Button x:Name="btnOldOrder"
-                    ImageSource="oldorder_icon"
-                    Text="Geçmiş Siparişler"
-                    TextTransform="None"
-                    BackgroundColor="DarkOrange"
-                    TextColor="Black"
-                    FontSize="Medium"
-                    CornerRadius="10"
-                    Clicked="btnOldOrder_Clicked"/>
+                    VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="btnMyOrder_Clicked"/>
             <Button x:Name="btnMyTask"
-                    ImageSource="task_icon"
                     Text="Görevlerim"
                     TextTransform="None"
-                    BackgroundColor="DarkOrange"
+                    BackgroundColor="Orange"
                     TextColor="Black"
                     FontSize="Medium"
+                    FontFamily="{StaticResource SumplierRegular}"
                     CornerRadius="10"
+                    VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand"
                     Clicked="btnMyTask_Clicked"/>
+            <Button x:Name="btnSetting"
+                    Text="Ayarlar"
+                    TextTransform="None"
+                    BackgroundColor="Orange"
+                    TextColor="Black"
+                    FontSize="Medium"
+                    FontFamily="{StaticResource SumplierRegular}"
+                    CornerRadius="10"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="FillAndExpand"/>
         </StackLayout>
         <StackLayout VerticalOptions="End"
                      HorizontalOptions="FillAndExpand"
@@ -93,11 +106,13 @@
                    VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Micro"
+                   FontFamily="{StaticResource SumplierRegular}"
                    TextColor="Black"/>
             <Label Text="v1"
                    VerticalOptions="StartAndExpand"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Micro"
+                   FontFamily="{StaticResource SumplierRegular}"
                    TextColor="Black"/>
         </StackLayout>
     </StackLayout>

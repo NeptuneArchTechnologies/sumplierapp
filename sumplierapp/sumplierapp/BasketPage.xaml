@@ -28,6 +28,7 @@
                        HorizontalOptions="FillAndExpand"
                        HorizontalTextAlignment="Start"
                        FontSize="Medium"
+                       FontFamily="{StaticResource SumplierRegular}"
                        TextColor="Black"/>
                 <ImageButton x:Name="allClear"
                              Source="trash_icon"
@@ -40,6 +41,16 @@
                              BackgroundColor="Transparent"
                              Margin="0,0,0,0"
                              Clicked="allClear_Clicked"/>
+                <ImageButton x:Name="discount"
+                             Source="discount_icon"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Center"
+                             HeightRequest="40"
+                             MinimumHeightRequest="40"
+                             WidthRequest="40"
+                             MinimumWidthRequest="40"
+                             BackgroundColor="Transparent"
+                             Margin="0,0,0,0"/>
                 <ImageButton x:Name="btnClose"
                              Source="close_icon"
                              VerticalOptions="CenterAndExpand"
@@ -68,40 +79,60 @@
                                       FlowItemTapped="basketOrderFlowListView_FlowItemTapped">
                         <flv:FlowListView.FlowColumnTemplate>
                             <DataTemplate>
-                                <StackLayout VerticalOptions="FillAndExpand"
-                                             HorizontalOptions="FillAndExpand"
-                                             Orientation="Horizontal">
-                                    <Label Text="{Binding id}"
-                                           VerticalOptions="FillAndExpand"
-                                           HorizontalOptions="Start"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           FontSize="Small"
-                                           TextColor="Black"
-                                           WidthRequest="100"
-                                           MinimumWidthRequest="100"/>
-                                    <Label Text="{Binding productName}"
-                                           VerticalOptions="FillAndExpand"
-                                           HorizontalOptions="FillAndExpand"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           FontSize="Small"
-                                           TextColor="Black"/>
-                                    <Label Text="{Binding quantity}"
-                                           VerticalOptions="FillAndExpand"
-                                           HorizontalOptions="FillAndExpand"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           FontSize="Small"
-                                           TextColor="Black"/>
-                                    <Label Text="{Binding totalPrice}"
-                                           VerticalOptions="FillAndExpand"
-                                           HorizontalOptions="FillAndExpand"
-                                           VerticalTextAlignment="Center"
-                                           HorizontalTextAlignment="Start"
-                                           FontSize="Small"
-                                           TextColor="Black"/>
-                                </StackLayout>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Reveal">
+                                            <SwipeItem IconImageSource="edit_icon"
+                                                       BackgroundColor="Orange"
+                                                       Invoked="OnEditSwipeItemInvoked"
+                                                       CommandParameter="{Binding .}" />
+                                            <SwipeItem IconImageSource="trash_icon"
+                                                       BackgroundColor="Red"
+                                                       Invoked="OnDeleteSwipeItemInvoked"
+                                                       CommandParameter="{Binding .}" />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5">
+                                        <StackLayout Orientation="Horizontal"
+                                                     VerticalOptions="FillAndExpand"
+                                                     HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding rowId}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"
+                                                   TextColor="Black"
+                                                   WidthRequest="100"
+                                                   MinimumWidthRequest="100"/>
+                                            <Label Text="{Binding productName}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"
+                                                   TextColor="Black"/>
+                                            <Label Text="{Binding quantity}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"
+                                                   TextColor="Black"/>
+                                            <Label Text="{Binding totalPrice}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"
+                                                   TextColor="Black"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </SwipeView>
                             </DataTemplate>
                         </flv:FlowListView.FlowColumnTemplate>
                     </flv:FlowListView>
@@ -127,7 +158,8 @@
                                    VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="End"
                                    TextColor="Black"
-                                   FontSize="Small"/>
+                                   FontSize="Small"
+                                   FontFamily="{StaticResource SumplierRegular}"/>
                         </StackLayout>
                         <StackLayout VerticalOptions="FillAndExpand"
                                      HorizontalOptions="End"

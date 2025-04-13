@@ -1,27 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="sumplierapp.CustomerLoginPage">
+             x:Class="sumplierapp.CustomerLoginPage"
+             BackgroundColor="White">
     <StackLayout VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand"
                  Padding="10">
         <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
-                     BackgroundColor="Transparent">
+                     BackgroundColor="Transparent"
+                     Orientation="Vertical">
+            <Image Source="sumplier_logo"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
             <Label Text="Lütfen Lisans Bilgilerinizi Giriniz"
-                   VerticalOptions="FillAndExpand"
+                   FontFamily="{StaticResource SumplierRegular}"
+                   VerticalOptions="End"
                    HorizontalOptions="Center"
                    VerticalTextAlignment="End"/>
         </StackLayout>
         <StackLayout VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand"
                      BackgroundColor="Transparent">
-            <Entry x:Name="emailEntry" Placeholder="Email"/>
-            <Entry x:Name="passwordEntry" Placeholder="Şifre"/>
+            <Entry x:Name="emailEntry"
+                   Placeholder="Email"
+                   FontFamily="{StaticResource SumplierRegular}"/>
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Şifre"
+                   FontFamily="{StaticResource SumplierRegular}"/>
             <Button x:Name="btnCustomerLoging"
                     Text="Giriş Yap"
                     BackgroundColor="DarkOrange"
                     TextColor="Black"
+                    FontFamily="{StaticResource SumplierRegular}"
                     TextTransform="None"
                     CornerRadius="10"
                     Clicked="btnCustomerLogin_Clicked"/>
@@ -38,6 +49,7 @@
                      BackgroundColor="Transparent">
             <Label x:Name="DeviceCode"
                    Text="Powered By Neptune Arch Technologies"
+                   FontFamily="{StaticResource SumplierRegular}"
                    VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Micro"

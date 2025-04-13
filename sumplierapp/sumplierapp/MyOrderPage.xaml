@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="sumplierapp.MyOrderPage"
+             BackgroundColor="White">
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 BackgroundColor="Transparent"
+                 Padding="5">
+        <StackLayout VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="50"
+                     MinimumHeightRequest="50"
+                     BackgroundColor="Transparent"
+                     Orientation="Horizontal">
+            <ImageButton x:Name="btnBack" 
+                         VerticalOptions="CenterAndExpand"
+                         Source="back_icon48"
+                         Padding="7,5,7,8"
+                         HorizontalOptions="Start"
+                         CornerRadius="40"
+                         HeightRequest="40"
+                         MinimumHeightRequest="40"
+                         WidthRequest="40"
+                         MinimumWidthRequest="40"
+                         BackgroundColor="Silver"
+                         Margin="5,0,0,0"
+                         Clicked="btnBack_Clicked"/>
+            <Image Source="sumplier_logo"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   Aspect="AspectFill"
+                   Margin="0,0,10,0"/>
+            <ImageButton VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="End"
+                         Source="plus_icon"
+                         Padding="7,5,7,8"
+                         Aspect="AspectFill"
+                         CornerRadius="40"
+                         HeightRequest="40"
+                         MinimumHeightRequest="40"
+                         WidthRequest="40"
+                         MinimumWidthRequest="40"
+                         BackgroundColor="Silver"
+                         Margin="0,0,5,0"
+                         Clicked="btnNewOrder_Clicked"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent"
+                     Orientation="Vertical"
+                     Padding="5,0,5,40">
+            <flv:FlowListView x:Name="myOrderFlowListView"
+                              SeparatorVisibility="Default"
+                              RowHeight="150"
+                              FlowColumnCount="1"
+                              VerticalOptions="FillAndExpand"
+                              HorizontalOptions="FillAndExpand">
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Frame HeightRequest="150"
+                                   MinimumHeightRequest="150"
+                                   CornerRadius="10"
+                                   Padding="0">
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             HorizontalOptions="FillAndExpand"
+                                             Orientation="Horizontal">
+                                    <StackLayout VerticalOptions="FillAndExpand"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 Orientation="Vertical"
+                                                 Padding="5">
+                                        <StackLayout VerticalOptions="Start"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     HeightRequest="30"
+                                                     MinimumHeightRequest="30"
+                                                     Orientation="Horizontal">
+                                            <Label Text="Hesap : "
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                            <Label Text="{Binding accountName}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Start"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     HeightRequest="30"
+                                                     MinimumHeightRequest="30"
+                                                     Orientation="Horizontal">
+                                            <Label Text="Sipariş No: "
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                            <Label Text="{Binding ticketCode}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Start"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     HeightRequest="30"
+                                                     MinimumHeightRequest="30"
+                                                     Orientation="Horizontal">
+                                            <Label Text="Ödeme Tipi: "
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                            <Label Text="{Binding paymentType}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Start"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     HeightRequest="30"
+                                                     MinimumHeightRequest="30"
+                                                     Orientation="Horizontal">
+                                            <Label Text="Durum: "
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                            <Label Text="{Binding status}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                            <Label Text="Toplam: "
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="Start"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                            <Label Text="{Binding generalTotal}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="End"
+                                                   FontSize="Small"
+                                                   FontFamily="{StaticResource SumplierRegular}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="FillAndExpand"
+                                                 HorizontalOptions="End"
+                                                 WidthRequest="10"
+                                                 MinimumWidthRequest="10"
+                                                 BackgroundColor="#27ae60">
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+        </StackLayout>
+        <StackLayout VerticalOptions="End"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="50"
+                     MinimumHeightRequest="50"
+                     BackgroundColor="Transparent">
+            <Label Text="Powered By Neptune Arch Technologies"
+                   VerticalOptions="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Micro"
+                   FontFamily="{StaticResource SumplierRegular}"
+                   TextColor="Black"/>
+            <Label Text="v1"
+                   VerticalOptions="StartAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Micro"
+                   FontFamily="{StaticResource SumplierRegular}"
+                   TextColor="Black"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

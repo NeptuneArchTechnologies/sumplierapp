@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text;
+using System.Globalization;
 
 namespace sumplierapp.Api
 {
@@ -26,7 +27,7 @@ namespace sumplierapp.Api
                 var customer = JsonConvert.DeserializeObject<Customer>(responseBody);
                 onSuccess?.Invoke(customer); // Başarı durumunda onSuccess delegate'ini çağır
 
-                
+
             }
             catch (Exception ex)
             {
@@ -96,8 +97,8 @@ namespace sumplierapp.Api
             {
                 onFail?.Invoke(ex.Message); // Hata durumunda onFail delegate'ini çağır
             }
-        }  
-        
+        }
+
         public async void GetProducts(long companyCode, long resellerCode, long customerCode, Action<List<CustomerProduct>> onSuccess, Action<string> onFail)
         {
             var client = new HttpClient();
@@ -185,6 +186,56 @@ namespace sumplierapp.Api
             {
                 // Başarısız işlemde OnFailure callback çağrılır
                 onFailure?.Invoke($"Cihaz gönderilirken bir hata oluştu: {ex.Message}");
+            }
+        }
+
+        public async Task PostTicket(string ticketJson, Action<string> onSuccess, Action<string> onFailure)
+        {
+            var client = new HttpClient();
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://api.sumplier.com/SumplierAPI/Ticket/PostTicket");
+                request.Content = new StringContent(ticketJson, Encoding.UTF8, "application/json");
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode(); // 2xx status codes
+
+                string responseContent = await response.Content.ReadAsStringAsync();
+
+                // OnSuccess callback'ine responseContent gönderiyoruz
+                onSuccess?.Invoke(responseContent);
+                Console.WriteLine("Sipariş Gönderildi, cevap: " + responseContent);
+            }
+            catch (Exception ex)
+            {
+                onFailure?.Invoke($"Sipariş Gönderimi Sırasında Hata: {ex.Message}");
+                Console.WriteLine("Sipariş Gönderimi Sırasında Hata:" + ex.Message);
+            }
+        }
+
+        public async Task GetTicketAll(long companyCode, long resellerCode, long customerCode, DateTime startDateTime, DateTime endDateTime, Action<List<Ticket>> onSuccess, Action<string> onFail)
+        {
+            var client = new HttpClient();
+
+            string formattedStart = startDateTime.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
+            string formattedEnd = endDateTime.ToString("yyyy-MM-ddTHH:mm:ss.fff", CultureInfo.InvariantCulture);
+
+            var request = new HttpRequestMessage(HttpMethod.Get,
+                $"https://api.sumplier.com/SumplierAPI/Ticket/GetTicketAll?StartDateTime={Uri.EscapeDataString(formattedStart)}&EndDateTime={Uri.EscapeDataString(formattedEnd)}&CompanyCode={companyCode}&ResellerCode={resellerCode}&CustomerCode={customerCode}");
+
+            try
+            {
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                List<Ticket> ticketList = JsonConvert.DeserializeObject<List<Ticket>>(responseBody);
+                onSuccess?.Invoke(ticketList);
+            }
+            catch (Exception ex)
+            {
+                onFail?.Invoke(ex.Message);
             }
         }
 
