@@ -54,7 +54,7 @@
                    FontFamily="{StaticResource SumplierRegular}"
                    VerticalOptions="Center"
                    HorizontalOptions="CenterAndExpand"
-                   FontSize="Micro"
+                   FontSize="Small"
                    TextColor="Black"/>
         </StackLayout>
     </StackLayout>

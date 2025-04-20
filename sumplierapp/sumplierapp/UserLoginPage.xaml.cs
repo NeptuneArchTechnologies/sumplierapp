@@ -28,29 +28,29 @@ namespace sumplierapp
 
         private void btnUserLogin_Clicked(object sender, EventArgs e)
         {
-            // Get the mail and password
+            btnUserLoging.IsEnabled = false;
             string email = emailEntry.Text;
             string password = passwordEntry.Text;
 
             var apiService = new ApiService();
 
-            // Inline ApiCallBacks
             apiService.GetUserLogin(email, password,
-                user =>
+            user =>
+            {
+                if (user != null)
                 {
-
-                    if (user != null)
-                    {
-                        Console.WriteLine($"Giriş başarılı {user}");
-                        DataStorage.Instance.SaveModel(DbKey.User.Name(), user);
-                        Config.Instance.SetCurrentUser(user);
-                        Navigation.PushModalAsync(new SplashPage(user.IsActive));
-                    }
-                },
-                errorMessage =>
-                {
-                    Console.WriteLine($"Giriş başarısız: {errorMessage}");
-                });
+                    btnUserLoging.IsEnabled = true;
+                    Console.WriteLine($"Giriş başarılı {user}");
+                    DataStorage.Instance.SaveModel(DbKey.User.Name(), user);
+                    Config.Instance.SetCurrentUser(user);
+                    Navigation.PushModalAsync(new SplashPage(user.IsActive));
+                }
+            },
+            errorMessage =>
+            {
+                btnUserLoging.IsEnabled = true;
+                Console.WriteLine($"Giriş başarısız: {errorMessage}");
+            });
         }
     }
 }

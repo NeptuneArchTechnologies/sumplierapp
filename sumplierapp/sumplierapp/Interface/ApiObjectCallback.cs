@@ -8,6 +8,5 @@ namespace sumplierapp.Interface
     {
         void OnSuccess(T data);
         void OnFail(string message);
-
     }
 }

@@ -24,7 +24,7 @@ namespace sumplierapp
             InitializeComponent();
             btnClose.IsVisible = false;
             this.BackgroundColor= Xamarin.Forms.Color.DarkOrange;
-            status.Text = "Sipariş Gönderiyor...";
+            status.Text = "Sipariş Gönderiliyor...";
             status.TextColor = Xamarin.Forms.Color.White;
             sendStatusIcon.Source = "waiting_icon";
             string json = Preferences.Get("CurrentTicket", string.Empty);
@@ -33,7 +33,7 @@ namespace sumplierapp
 
         async void PostTicket(string json)
         {
-            await Task.Delay(2000);
+            await Task.Delay(5000);
 
             await apiService.PostTicket(json,
             onSuccess: (responseContent) =>

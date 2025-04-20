@@ -36,6 +36,7 @@ namespace sumplierapp.Configs
         private CustomerAccount currentCustomerAccount;
         private CustomerCategory currentCustomerCategory;
         private User currentUser;
+        private UsersGeoLocation usersGeoLocation;
         private CustomerDevice currentDevice;
         private Dictionary<long, CustomerMenu> menuMap = new Dictionary<long, CustomerMenu>();
         private Dictionary<long, CustomerCategory> categoryMap = new Dictionary<long, CustomerCategory>();
@@ -67,10 +68,19 @@ namespace sumplierapp.Configs
             return currentCustomer;
         }
 
-
         public void SetCurrentUser(User user)
         {
             currentUser = user;
+        }
+
+        public void SetCurrentLocation(UsersGeoLocation _usersGeoLocation)
+        {
+            usersGeoLocation = _usersGeoLocation;
+        }
+
+        public UsersGeoLocation GetCurrentLocation()
+        {
+            return usersGeoLocation;
         }
 
         public User GetCurrentUser()

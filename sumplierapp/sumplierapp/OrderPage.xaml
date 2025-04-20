@@ -27,20 +27,23 @@
                              WidthRequest="100"
                              MinimumWidthRequest="100">
                         <Label Text="Hesap Kodu"
-                           VerticalOptions="CenterAndExpand"
-                           HorizontalOptions="StartAndExpand"/>
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               FontFamily="{StaticResource SumplierRegular}"/>
                     </StackLayout>
                     <StackLayout VerticalOptions="FillAndExpand"
                              HorizontalOptions="Start"
                              WidthRequest="10"
                              MinimumWidthRequest="10">
                         <Label Text=":"
-                           VerticalOptions="CenterAndExpand"
-                           HorizontalOptions="StartAndExpand"/>
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               FontFamily="{StaticResource SumplierRegular}"/>
                     </StackLayout>
                     <StackLayout VerticalOptions="FillAndExpand"
                              HorizontalOptions="FillAndExpand">
-                        <Label x:Name="AccountCode"/>
+                        <Label x:Name="AccountCode"
+                               FontFamily="{StaticResource SumplierRegular}"/>
                     </StackLayout>
                 </StackLayout>
                 <StackLayout VerticalOptions="Start"
@@ -55,21 +58,24 @@
                              WidthRequest="100"
                              MinimumWidthRequest="100">
                         <Label Text="Hesap Adı"
-                           VerticalOptions="CenterAndExpand"
-                           HorizontalOptions="StartAndExpand"
-                           VerticalTextAlignment="Center"/>
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               VerticalTextAlignment="Center"
+                               FontFamily="{StaticResource SumplierRegular}"/>
                     </StackLayout>
                     <StackLayout VerticalOptions="FillAndExpand"
                              HorizontalOptions="Start"
                              WidthRequest="10"
                              MinimumWidthRequest="10">
                         <Label Text=":"
-                           VerticalOptions="CenterAndExpand"
-                           HorizontalOptions="StartAndExpand"/>
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="StartAndExpand"
+                               FontFamily="{StaticResource SumplierRegular}"/>
                     </StackLayout>
                     <StackLayout VerticalOptions="FillAndExpand"
                              HorizontalOptions="FillAndExpand">
-                        <Label x:Name="AccountName"/>
+                        <Label x:Name="AccountName"
+                               FontFamily="{StaticResource SumplierRegular}"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
@@ -105,6 +111,7 @@
                 <Button x:Name="badgeCount"
                         Text="99"
                         FontSize="Small"
+                        FontFamily="{StaticResource SumplierRegular}"
                         Padding="-5"
                         HeightRequest="20"
                         MinimumHeightRequest="20"
@@ -167,7 +174,8 @@
                                    HorizontalOptions="FillAndExpand"
                                    CornerRadius="10"
                                    BorderColor="DarkOrange"
-                                   Padding="5">
+                                   Padding="5"
+                                   Margin="0,0,2,2">
                                 <StackLayout VerticalOptions="FillAndExpand"
                                              HorizontalOptions="FillAndExpand"
                                              Orientation="Vertical">
@@ -177,6 +185,7 @@
                                            VerticalTextAlignment="Center"
                                            HorizontalTextAlignment="Start"
                                            FontSize="Small"
+                                           FontFamily="{StaticResource SumplierRegular}"
                                            TextColor="Black"
                                            WidthRequest="100"
                                            MinimumWidthRequest="100"/>
@@ -186,6 +195,7 @@
                                            VerticalTextAlignment="Center"
                                            HorizontalTextAlignment="Start"
                                            FontSize="Small"
+                                           FontFamily="{StaticResource SumplierRegular}"
                                            TextColor="Black"/>
                                     <Label Text="{Binding Price,StringFormat='{0:0.00}'}"
                                            VerticalOptions="FillAndExpand"
@@ -193,6 +203,7 @@
                                            VerticalTextAlignment="Center"
                                            HorizontalTextAlignment="Start"
                                            FontSize="Small"
+                                           FontFamily="{StaticResource SumplierRegular}"
                                            TextColor="Black"/>
                                 </StackLayout>
                             </Frame>
@@ -212,6 +223,7 @@
                     BackgroundColor="DarkOrange"
                     TextColor="Black"
                     FontSize="Medium"
+                    FontFamily="{StaticResource SumplierRegular}"
                     CornerRadius="10"
                     Clicked="btnContinue_Clicked"/>
         </StackLayout>

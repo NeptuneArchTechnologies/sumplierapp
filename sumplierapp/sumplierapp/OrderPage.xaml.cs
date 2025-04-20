@@ -45,6 +45,7 @@ namespace sumplierapp
                 categoryButton.StyleId = Category[a].CategoryCode.ToString();
                 categoryButton.VerticalOptions = LayoutOptions.Start;
                 categoryButton.HorizontalOptions = LayoutOptions.FillAndExpand;
+                categoryButton.FontFamily = (Xamarin.Forms.OnPlatform<string>)Xamarin.Forms.Application.Current.Resources["SumplierRegular"];
                 categoryButton.CornerRadius = 10;
                 categoryButton.BackgroundColor = Color.DarkOrange;
                 categoryButton.TextColor = Color.Black;

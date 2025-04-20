@@ -16,11 +16,13 @@
         <Label x:Name="StatusText"
                TextColor="Black"
                FontSize="Medium"
+               FontFamily="{StaticResource SumplierRegular}"
                VerticalOptions="Start"
                HorizontalOptions="CenterAndExpand"/>
         <Label x:Name="PercentLabel"
                TextColor="Black"
                FontSize="Medium"
+               FontFamily="{StaticResource SumplierRegular}"
                VerticalOptions="StartAndExpand"
                HorizontalOptions="CenterAndExpand"/>
     </StackLayout>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System;
 using Xamarin.Essentials;
 using System.Threading;
+using System.Globalization;
 
 namespace sumplierapp.Threads
 {
@@ -115,12 +116,20 @@ namespace sumplierapp.Threads
 
 
         // GetCurrentLocation
-        private async Task<Location> GetCurrentLocation()
+        private async Task<Xamarin.Essentials.Location> GetCurrentLocation()
         {
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium);
                 var location = await Geolocation.GetLocationAsync(request);
+
+                var usersGeoLocation = new UsersGeoLocation
+                {
+                    lat = location.Latitude.ToString(CultureInfo.InvariantCulture),
+                    lang = location.Longitude.ToString(CultureInfo.InvariantCulture)
+                };
+
+                Config.Instance.SetCurrentLocation(usersGeoLocation);
 
                 if (location == null)
                     Console.WriteLine("Konum bilgisi null döndü.");
@@ -144,7 +153,7 @@ namespace sumplierapp.Threads
         }
 
         // SendLocation
-        private async Task SendLocation(Location location)
+        private async Task SendLocation(Xamarin.Essentials.Location location)
         {
             try
             {
@@ -166,16 +175,14 @@ namespace sumplierapp.Threads
                 string json = JsonConvert.SerializeObject(geo);
 
                 await apiService.PostGeoLocation(json,
-                        onSuccess: () =>
-                        {
-                            Console.WriteLine("Konum başarıyla gönderildi.");
-                        },
-                        onFailure: (errorMessage) =>
-                        {
-                            Console.WriteLine("Hata: " + errorMessage);
-                        }
-                    );
-
+                onSuccess: () =>
+                {
+                    Console.WriteLine("Konum başarıyla gönderildi.");
+                },
+                onFailure: (errorMessage) =>
+                {
+                    Console.WriteLine("Hata: " + errorMessage);
+                });
             }
             catch (Exception ex)
             {

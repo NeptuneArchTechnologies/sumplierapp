@@ -23,14 +23,14 @@
                          MinimumHeightRequest="20">
                 <Label Text="Lütfen hesap seçiniz"
                        FontSize="Medium"
+                       FontFamily="{StaticResource SumplierRegular}"
                        FontAttributes="Bold"
                        TextColor="Black"/>
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand"
                          HorizontalOptions="FillAndExpand">
                 <flv:FlowListView x:Name="customerAccountFlowListView"
-                                  SeparatorColor="DodgerBlue"
-                                  SeparatorVisibility="Default"
+                                  SeparatorVisibility="None"
                                   FlowColumnCount="1"
                                   VerticalOptions="FillAndExpand"
                                   HorizontalOptions="FillAndExpand"
@@ -38,14 +38,15 @@
                     <flv:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
                             <StackLayout VerticalOptions="FillAndExpand"
-                                         HorizontalOptions="FillAndExpand"
-                                         Orientation="Horizontal">
+                                     HorizontalOptions="FillAndExpand"
+                                     Orientation="Horizontal">
                                 <Label Text="{Binding AccountCode}"
                                        VerticalOptions="FillAndExpand"
                                        HorizontalOptions="Start"
                                        VerticalTextAlignment="Center"
                                        HorizontalTextAlignment="Start"
                                        FontSize="Medium"
+                                       FontFamily="{StaticResource SumplierRegular}"
                                        TextColor="Black"
                                        WidthRequest="100"
                                        MinimumWidthRequest="100"/>
@@ -55,6 +56,7 @@
                                        VerticalTextAlignment="Center"
                                        HorizontalTextAlignment="Start"
                                        FontSize="Medium"
+                                       FontFamily="{StaticResource SumplierRegular}"
                                        TextColor="Black"/>
                             </StackLayout>
                         </DataTemplate>
@@ -62,15 +64,16 @@
                 </flv:FlowListView>
             </StackLayout>
             <StackLayout VerticalOptions="End"
-                         HorizontalOptions="FillAndExpand">
+                     HorizontalOptions="FillAndExpand">
                 <Button x:Name="btnClose"
-                        Text="Kapat"
-                        TextTransform="None"
-                        BackgroundColor="DarkOrange"
-                        TextColor="Black"
-                        FontSize="Medium"
-                        CornerRadius="10"
-                        Clicked="btnClose_Clicked"/>
+                    Text="Kapat"
+                    TextTransform="None"
+                    BackgroundColor="DarkOrange"
+                    TextColor="Black"
+                    FontSize="Medium"
+                    FontFamily="{StaticResource SumplierRegular}"
+                    CornerRadius="10"
+                    Clicked="btnClose_Clicked"/>
             </StackLayout>
         </StackLayout>
     </Frame>

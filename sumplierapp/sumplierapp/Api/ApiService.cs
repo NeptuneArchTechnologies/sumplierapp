@@ -238,6 +238,5 @@ namespace sumplierapp.Api
                 onFail?.Invoke(ex.Message);
             }
         }
-
     }
 }
